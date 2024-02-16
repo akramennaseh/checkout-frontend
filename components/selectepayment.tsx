@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
+import Image from 'next/image'
 
 const plans = [
     {
@@ -50,7 +51,7 @@ export default function Example() {
                                                     >
                                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                             <span>{plan.name}</span>
-                                                            <img className='pl-3' src={plan.image} style={{ height: '30px', width: 'auto' }} alt="" />
+                                                            <Image className='pl-3' height={30} width={153} src={plan.image}  alt="" />
                                                         </div>
                                                     </RadioGroup.Label>
                                                     <RadioGroup.Description
