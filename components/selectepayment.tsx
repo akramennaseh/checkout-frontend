@@ -6,7 +6,7 @@ import Image from 'next/image'
 const plans = [
     {
         name: 'Paypal',
-        image: '/paypal.png'
+        image: '/paypal2.png'
     },
     {
         name: 'Credit or Debit Card',
