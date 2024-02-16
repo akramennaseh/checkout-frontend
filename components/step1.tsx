@@ -30,10 +30,9 @@ export default function CheckoutPage() {
     };
 
     return (
-        <div style={{ display: 'flex ', justifyContent: 'space-between' }}>
-            {products.map((product) => (
+        <div className='flex flex-col  sm:flex-row'>  {products.map((product) => (
                 <div 
-                    className=' my-8'
+                    className=' flex-1 mx-5 my-8'
                     key={product.id}
                     onClick={() => handleProductClick(product)}
                     style={{
@@ -41,7 +40,7 @@ export default function CheckoutPage() {
                         cursor: 'pointer',
                     }}
                 >
-                    <Card className={`card w-[540px] ${selectedProduct?.id === product.id ? 'card-selected' : ''}`}>
+                    <Card className={`card ${selectedProduct?.id === product.id ? 'card-selected' : ''}`}>
                         <CardHeader>
                             <CardTitle>{product.name}</CardTitle>
                             <CardDescription>Seamless Streaming. Unrivaled Quality.</CardDescription>

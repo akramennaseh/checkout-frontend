@@ -35,8 +35,8 @@ export default function Example() {
                                         ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300'
                                         : ''
                                     }
-                  ${checked ? 'bg-sky-900/75 text-white' : 'bg-white'}
-                    relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+                        ${checked ? 'bg-sky-900/75 text-white' : 'bg-white'}
+                            relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                                 }
                             >
                                 {({ active, checked }) => (
@@ -49,9 +49,9 @@ export default function Example() {
                                                         className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'}`}
                                                     >
                                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-    <span>{plan.name}</span>
-    <img src={plan.image} style={{ height: '30px', width: 'auto' }} alt="" />
-</div>
+                                                            <span>{plan.name}</span>
+                                                            <img className='pl-3' src={plan.image} style={{ height: '30px', width: 'auto' }} alt="" />
+                                                        </div>
                                                     </RadioGroup.Label>
                                                     <RadioGroup.Description
                                                         as="span"
