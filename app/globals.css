@@ -69,11 +69,11 @@
 
 .card:hover {
   transform: scale(1.05);
-  background-color:rgba(225, 29, 72,0.2);
+  background-color:hsla(217.2, 91.2%, 59.8%, 0.2);;
 }
 
 .card-selected {
   transform: scale(1.05);
-  background-color: rgba(225, 29, 72,0.2);
+  background-color: hsla(217.2, 91.2%, 59.8%, 0.2);;
 }
 
