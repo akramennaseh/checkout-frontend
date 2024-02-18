@@ -9,6 +9,19 @@ import { Label } from "@/components/ui/label"
 import Example from '@/components/selectepayment';
 import { Button } from '@/components/ui/button';
 
+type DiscountCodes = {
+    [key: string]: number;
+};
+
+const getDiscountPercentage = (code: string): number => {
+    const discounts: DiscountCodes = {
+        'CODE10': 10,
+        'CODE20': 20,
+        'CODE30': 30,
+    };
+
+    return discounts[code.toUpperCase()] || 0;
+};
 
 type Extra = {
     id: number;
@@ -31,6 +44,17 @@ type Product = {
 
 
 const Page = () => {
+
+    const [discount, setDiscount] = useState({ code: '', percentage: 0 });
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+    };
+    const handleApplyClick = () => {
+        const percentage = getDiscountPercentage(inputValue);
+        setDiscount({ code: inputValue, percentage });
+    };
 
     const products: Product[] = [
         { id: 1, name: '6 Month Pass', price: '30', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
@@ -246,12 +270,19 @@ const Page = () => {
                                 }}>Select your preferred payment method</Label>
                                 <Example />
                             </div>
+                            <div className="px-5 pb-5 grid w-full  items-center gap-4">
+                                <Button className='h-[50px]' type="submit">Continue</Button>
+                            </div>
+
                         </Card>
                         <Card className='md:box h-max md:px-[19px] [grid-row:1] md:[grid-row:_unset]'>
                             <div className='px-[27px] pt-[25px] pb-[21px] md:pt[30px] md:pr-0 md:pl-[6px] md:pb-6'>
                                 <div className="flex w-full max-w-sm items-center space-x-2">
-                                    <Input type="name" placeholder="Discount code" />
-                                    <Button type="submit">Apply</Button>
+                                    <Input type="name" placeholder="Discount code" value={inputValue}
+                                        onChange={handleInputChange}
+                                    />
+                                    <Button type="submit" onClick={handleApplyClick}>Apply</Button>
+                                    
                                 </div>
                             </div>
                             <div className='text-dark px-[18px] pb-[21px] md:pb-7 md:pt-[14px] md:border-t md:border-dark/10 md:px-0 md:pl-[9px]'>
@@ -294,19 +325,28 @@ const Page = () => {
                                         </div>
                                     )}
                                     {checkboxValue !== 0 && (
-                                    <div className='grid gap-[14px] pt-[25px]'>
-                                        <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
-                                            <p>{checkboxValue} Proxy Protection</p>
-                                            <p>€{Proxys[0].price}</p>
+                                        <div className='grid gap-[14px] pt-[25px]'>
+                                            <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
+                                                <p>{checkboxValue} Proxy Protection</p>
+                                                <p>€{Proxys[0].price}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
+                                    {discount.percentage > 0 && (
+                                        <div className='grid gap-[14px] pt-[25px]'>
+                                            <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
+                                                <p>Discount:</p>
+                                                <p>{`-${discount.percentage}%`}</p>
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             </div>
                             <div className='px-[18px] pt-[21px] pb-[25px] border-t border-b border-dark/10 md:border-b-0 md:pt-[34px] md:px-0 md:pl-[9px] md:pb-[35px]'>
                                 <div className='grid grid-flow-col justify-between font-medium text-[22px] leading-[24px] text-dark'>
                                     <p>Total</p>
-                                    <p>€{`${(count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")).toFixed(2)}`}</p>
+                                    <p>€{`${(count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") ) * Number(discount.percentage)/100)).toFixed(2)}`}</p>
+                                    
                                 </div>
                             </div>
                         </Card>

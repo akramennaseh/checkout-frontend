@@ -6,14 +6,14 @@ import Image from 'next/image'
 const plans = [
     {
         name: 'Paypal',
-        image: '/paypal2.png'
+        image: '/payp.png'
     },
     {
         name: 'Credit or Debit Card',
         image: '/CreditCard.svg'
     },
     {
-        name: 'Crypto Currencies',
+        name: 'Crypto Currencies -20%',
         image: '/Cryptocurrency.svg'
     },
 ]
