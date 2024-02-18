@@ -1,22 +1,23 @@
 "use client"
 import React, { useState } from 'react'
 import { ModeToggle } from "@/components/Toggle";
-import CheckoutPage from "@/components/step1";
-import CounterInput from "@/components/counterInput";
 import Image from "next/image";
-import Step2 from "@/components/step2";
-import Step3 from "@/components/step3";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import Card1 from '@/components/card1';
-import Card2 from '@/components/card2';
-import { Checkbox } from '@radix-ui/react-checkbox';
-
-
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Example from '@/components/selectepayment';
 import { Button } from '@/components/ui/button';
 
+
+type Extra = {
+    id: number;
+    price: string;
+};
+type Proxy = {
+    id: number;
+    price: string;
+};
 
 
 type Product = {
@@ -35,9 +36,27 @@ const Page = () => {
         { id: 1, name: '6 Month Pass', price: '30', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
         { id: 2, name: '12 Month Pass', price: '70', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
     ];
+    const Extras: Extra[] = [
+        { id: 1, price: '19.99' },
+
+    ];
+
+    const Proxys: Proxy[] = [
+        { id: 1, price: '9.99' },
+
+    ];
+
+
     const [selectedProduct, setSelectedProduct] = useState(products.find(product => product.id === 2));
     const [selectedProductPrice, setSelectedProductPrice] = useState(selectedProduct?.price);
     const [selectedProductName, setSelectedProductName] = useState(selectedProduct?.name);
+    const [count, setCount] = useState(0);
+    const increment = () => setCount(count + 1);
+    const decrement = () => setCount(count > 0 ? count - 1 : 0);
+    const [checkboxValue, setCheckboxValue] = useState(0);
+    const handleCheckboxChange = (checked: boolean | string) => {
+        setCheckboxValue(checked === true ? 1 : 0);
+    };
 
     const handleProductClick = (product: Product) => {
         setSelectedProduct(product);
@@ -143,8 +162,12 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <div className="flex w-[236px] justify-between items-center mx-auto md:w-[222px] h-[60px]">
-                                        <p className="text-[20px] text-webDarker font-bold">€19.99</p>
-                                        <CounterInput />
+                                        <p className="text-[20px] text-webDarker font-bold">€{Extras[0].price}</p>
+                                        <div className='border-2 py-3 px-3 text-xl font-semibold rounded-md border-inherit			'>
+                                            <button onClick={decrement} className='w-[20px]'>-</button>
+                                            <span className='mx-2 w-[39px] text-center'>{count}</span>
+                                            <button onClick={increment} className='w-[20px]'>+</button>
+                                        </div>
                                     </div>
                                 </div>
                             </Card>
@@ -160,9 +183,10 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <div className="flex w-[236px] justify-between items-center mx-auto md:w-[222px] h-[60px]">
-                                        <p className="text-[20px] text-webDarker font-bold">€9.99</p>
-                                        <Checkbox style={{ width: "40px", height: "40px" }} id="terms" />
-
+                                        <p className="text-[20px] text-webDarker font-bold">€{Proxys[0].price}</p>
+                                        <Checkbox style={{ width: "40px", height: "40px" }} id="terms"
+                                            onCheckedChange={handleCheckboxChange}
+                                        />
                                     </div>
                                 </div>
                             </Card>
@@ -259,24 +283,30 @@ const Page = () => {
                                     </li>
                                 </ul>
                                 <div>
+                                    {count !== 0 && (
+                                        <div className='grid gap-[14px] pt-[25px]'>
+
+                                            <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
+                                                <p>{count} Extra Connections</p>
+                                                <p>€ {`${count * parseFloat(Extras[0].price)}`}</p>
+                                            </div>
+
+                                        </div>
+                                    )}
+                                    {checkboxValue !== 0 && (
                                     <div className='grid gap-[14px] pt-[25px]'>
                                         <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
-                                            <p>2 Extra Connections</p>
-                                            <p>€39.98</p>
+                                            <p>{checkboxValue} Proxy Protection</p>
+                                            <p>€{Proxys[0].price}</p>
                                         </div>
                                     </div>
-                                    <div className='grid gap-[14px] pt-[25px]'>
-                                        <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
-                                            <p>1 Proxy Protection</p>
-                                            <p>€9.99</p>
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                             <div className='px-[18px] pt-[21px] pb-[25px] border-t border-b border-dark/10 md:border-b-0 md:pt-[34px] md:px-0 md:pl-[9px] md:pb-[35px]'>
                                 <div className='grid grid-flow-col justify-between font-medium text-[22px] leading-[24px] text-dark'>
                                     <p>Total</p>
-                                    <p>€97.85</p>
+                                    <p>€{`${(count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")).toFixed(2)}`}</p>
                                 </div>
                             </div>
                         </Card>
@@ -286,5 +316,4 @@ const Page = () => {
         </div>
     )
 }
-
 export default Page
