@@ -29,7 +29,7 @@ type Product = {
 };
 
 
-const page = () => {
+const Page = () => {
 
     const products: Product[] = [
         { id: 1, name: '6 Month Pass', price: '30', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
@@ -287,4 +287,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
