@@ -81,7 +81,7 @@ const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState('0');
-    const [product, setProduct] = useState('0');
+    const [product, setProduct] = useState('');
 
     const { toast } = useToast();
 
@@ -108,7 +108,6 @@ const Page = () => {
       toast({ description: "Data submitted successfully." });
 
       let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
-      let products = selectedProductName;
       let response2;
       if (selectedPlanId === 1) {
         response2 = await fetch('https://check-aax0.onrender.com/api/payments/paypal', {
@@ -408,7 +407,7 @@ const Page = () => {
                                         fontSize: "18px",
                                         fontWeight: 500,
                                     }}>product</Label>
-                                    <Input type="product" placeholder="product" value={product} readOnly />
+                                    <Input type="product" placeholder="product" value={selectedProductName} readOnly />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
