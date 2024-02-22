@@ -129,7 +129,8 @@ const Page = () => {
           },
           body: JSON.stringify({  
             "total": totals,
-            "currency": "EUR"
+            "currency": "EUR",
+            "email": email
           }),
         });
       } else if (selectedPlanId === 3) {
