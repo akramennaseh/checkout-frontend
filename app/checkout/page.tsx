@@ -100,7 +100,7 @@ const Page = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, total, productname, }),
+        body: JSON.stringify({ name, email, total,selectedProduct }),
       });
 
       const data = await response.json();
@@ -407,7 +407,7 @@ const Page = () => {
                                         fontSize: "18px",
                                         fontWeight: 500,
                                     }}>productname</Label>
-                                    <Input type="productname" placeholder="productname" value={selectedProductName} readOnly />
+                                    <Input type="productname" placeholder="productname" value={productname} readOnly />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
