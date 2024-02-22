@@ -107,7 +107,6 @@ const Page = () => {
       console.log(data);
       toast({ description: "Data submitted successfully." });
 
-      let productos = selectedProductName;
 
       let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
       let response2;
@@ -218,7 +217,9 @@ const Page = () => {
         const newTotal = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
         setTotal(newTotal);
     }, [count, Extras, checkboxValue, Proxys, selectedProductPrice, discount.percentage]);
-
+    useEffect(() => {
+        setProducto(selectedProductName);
+    }, [selectedProductName]);
 
 
     return (
