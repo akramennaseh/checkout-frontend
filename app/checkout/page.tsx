@@ -218,7 +218,7 @@ const Page = () => {
         setTotal(newTotal);
     }, [count, Extras, checkboxValue, Proxys, selectedProductPrice, discount.percentage]);
     useEffect(() => {
-        setProducto(selectedProductName);
+        setProducto(selectedProductName || "");
     }, [selectedProductName]);
 
 
