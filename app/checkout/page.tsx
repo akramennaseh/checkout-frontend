@@ -81,7 +81,7 @@ const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState('0');
-    const [productname, setProductname] = useState('');
+    const [producto, setProducto] = useState('0');
 
     const { toast } = useToast();
 
@@ -100,12 +100,14 @@ const Page = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, total, selectedProduct }),
+        body: JSON.stringify({ name, email, total, producto }),
       });
 
       const data = await response.json();
       console.log(data);
       toast({ description: "Data submitted successfully." });
+
+      let productos = selectedProductName;
 
       let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
       let response2;
@@ -400,6 +402,14 @@ const Page = () => {
                                         fontWeight: 500,
                                     }}>total</Label>
                                     <Input type="total" placeholder="total" value={total} readOnly />
+                                </div>
+                                <div style={{ }} className="px-5 pb-5 grid w-full items-center gap-4">
+                                    <Label htmlFor="producto" style={{
+                                        fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
+                                        fontSize: "18px",
+                                        fontWeight: 500,
+                                    }}>producto</Label>
+                                    <Input type="producto" placeholder="producto" value={producto} readOnly />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
