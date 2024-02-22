@@ -81,7 +81,7 @@ const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState('0');
-    const [product, setProduct] = useState('');
+    const [product, setProduct] = useState('0');
 
     const { toast } = useToast();
 
@@ -402,7 +402,7 @@ const Page = () => {
                                     }}>total</Label>
                                     <Input type="total" placeholder="total" value={total} readOnly />
                                 </div>
-                                <div style={{ display: 'none' }} className="px-5 pb-5 grid w-full items-center gap-4">
+                                <div style={{ }} className="px-5 pb-5 grid w-full items-center gap-4">
                                     <Label htmlFor="product" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
                                         fontSize: "18px",
