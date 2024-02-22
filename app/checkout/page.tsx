@@ -402,12 +402,12 @@ const Page = () => {
                                     <Input type="total" placeholder="total" value={total} readOnly />
                                 </div>
                                 <div style={{ }} className="px-5 pb-5 grid w-full items-center gap-4">
-                                    <Label htmlFor="productname" style={{
+                                    <Label htmlFor="selectedProduct" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
                                         fontSize: "18px",
                                         fontWeight: 500,
-                                    }}>productname</Label>
-                                    <Input type="productname" placeholder="productname" value={productname} readOnly />
+                                    }}>selectedProduct</Label>
+                                    <Input type="selectedProduct" placeholder="selectedProduct" value={selectedProductName} readOnly />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
