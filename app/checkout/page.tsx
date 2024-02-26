@@ -81,7 +81,14 @@ const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState('0');
-    const [producto, setProducto] = useState('0');
+    const [paymentGateway, setPaymentGateway] = useState('paypal');
+    const [productName, setProductName] = useState('0');
+    const [productPrice, setProductPrice] = useState('0');
+    const [extras, setExtras] = useState('0');
+    const [proxy, setProxy] = useState('0');
+    const [discountCode, setDiscountCode] = useState('0');
+    
+    
 
     const { toast } = useToast();
 
@@ -95,12 +102,12 @@ const Page = () => {
         }
 
         try { 
-      const response = await fetch('https://check-aax0.onrender.com/api/customers', {
+      const response = await fetch('https://check-aax0.onrender.com/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, total, producto }),
+        body: JSON.stringify({ name, email, total, paymentGateway, productName, productPrice, extras, proxy, discountCode }),
       });
 
       const data = await response.json();
@@ -109,56 +116,10 @@ const Page = () => {
 
 
       let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
-      let response2;
-      if (selectedPlanId === 1) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/paypal', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "total": totals,
-            "currency": "EUR",
-            "email": email
-          }),
-        });
-      } else if (selectedPlanId === 2) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/stripe', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({  
-            "total": totals,
-            "currency": "EUR",
-            "email": email
-          }),
-        });
-      } else if (selectedPlanId === 3) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/crypto', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "total": totals,
-            "currency": "EUR"
-          }),
-        });
-      }
-
-  if (response2) {
-    if (selectedPlanId === 1) {
-    const url = await response2.text();
-    window.location.href = url;
-    } else if (selectedPlanId === 2) {
-      const responseJson = await response2.json();
-  const url = responseJson.url;
-
-  // Redirect to the URL provided by the API
-  window.location.href = url;
-    }
-  }
+      const approvalUrl = data.approvalUrl;
+    
+      // Redirect to the URL provided by the API
+      window.location.href = approvalUrl;
    
 
     // Redirect to the URL provided by the second API
@@ -218,8 +179,24 @@ const Page = () => {
         setTotal(newTotal);
     }, [count, Extras, checkboxValue, Proxys, selectedProductPrice, discount.percentage]);
     useEffect(() => {
-        setProducto(selectedProductName || "");
+        setProductName(selectedProductName || "");
     }, [selectedProductName]);
+    useEffect(() => {
+        setProductPrice(selectedProductPrice || "");
+    }, [selectedProductPrice]);
+    setExtras
+    useEffect(() => {
+        const newExtras = count.toString();
+        setExtras(newExtras);
+    }, [count]);
+    useEffect(() => {
+        const newProxy = checkboxValue.toString();
+        setProxy(newProxy);
+    }, [checkboxValue]);
+    useEffect(() => {
+        const newDiscountCode = Number(discount.percentage).toString();
+        setDiscountCode(newDiscountCode);
+    }, [discount.percentage]);
 
 
     return (
@@ -405,12 +382,12 @@ const Page = () => {
                                     <Input type="total" placeholder="total" value={total} readOnly />
                                 </div>
                                 <div style={{ }} className="px-5 pb-5 grid w-full items-center gap-4">
-                                    <Label htmlFor="producto" style={{
+                                    <Label htmlFor="productName" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
                                         fontSize: "18px",
                                         fontWeight: 500,
-                                    }}>producto</Label>
-                                    <Input type="producto" placeholder="producto" value={producto} readOnly />
+                                    }}>productName</Label>
+                                    <Input type="productName" placeholder="producto" value={productName} readOnly />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
