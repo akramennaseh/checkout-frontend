@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 
 const Page = () => {
@@ -45,11 +46,15 @@ const Page = () => {
   }, [paymentId, PayerID, token])
 
   return (
+    <Suspense>
     <div>
-
+      <div>token={token}</div>
+      <div>paymentId={paymentId}</div>
+      <div>PayerID={PayerID}</div>
       <div>Owner Info: {ownerInfo ? JSON.stringify(ownerInfo) : 'Loading...'}</div>
       <div>Owner Info: {orderInfo ? JSON.stringify(orderInfo) : 'Loading...'}</div>
     </div>
+    </Suspense>
   )
 }
 
