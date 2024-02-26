@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
   const paymentId = searchParams.get("paymentId")
@@ -15,7 +15,7 @@ const page = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      },
+      }, 
       body: JSON.stringify({
         token: token,
         paymentId: paymentId,
@@ -54,4 +54,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

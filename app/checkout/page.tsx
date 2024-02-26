@@ -81,7 +81,7 @@ const Page = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [total, setTotal] = useState('0');
-    const [paymentGateway, setPaymentGateway] = useState('paypal');
+    const [paymentGateway, setPaymentGateway] = useState('');
     const [productName, setProductName] = useState('0');
     const [productPrice, setProductPrice] = useState('0');
     const [extras, setExtras] = useState('0');
@@ -197,6 +197,10 @@ const Page = () => {
         const newDiscountCode = Number(discount.percentage).toString();
         setDiscountCode(newDiscountCode);
     }, [discount.percentage]);
+    useEffect(() => {
+        setPaymentGateway(selected.name);
+    }, [selected]);
+
 
 
     return (
