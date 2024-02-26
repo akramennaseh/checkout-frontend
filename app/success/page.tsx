@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
+
 const Page = () => {
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
@@ -45,9 +46,7 @@ const Page = () => {
 
   return (
     <div>
-      <div>token={token}</div>
-      <div>paymentId={paymentId}</div>
-      <div>PayerID={PayerID}</div>
+
       <div>Owner Info: {ownerInfo ? JSON.stringify(ownerInfo) : 'Loading...'}</div>
       <div>Owner Info: {orderInfo ? JSON.stringify(orderInfo) : 'Loading...'}</div>
     </div>
