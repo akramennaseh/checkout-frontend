@@ -112,6 +112,7 @@ const Page = () => {
 
       const data = await response.json();
       console.log(data);
+      console.log("Received data from API:", data);
       toast({ description: "Data submitted successfully." });
       
 
