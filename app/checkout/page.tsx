@@ -120,7 +120,8 @@ const Page = () => {
       
     
       if (paymentGateway === 'Credit or Debit Card') {
-        window.open(data.url, '_blank');
+        const approvalUrl = data.url;
+        window.location.href = approvalUrl;
     } else if (paymentGateway === 'Paypal') {
         const approvalUrl = data.approvalUrl;
         window.location.href = approvalUrl;
