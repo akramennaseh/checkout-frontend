@@ -113,13 +113,19 @@ const Page = () => {
       const data = await response.json();
       console.log(data);
       toast({ description: "Data submitted successfully." });
+      
 
 
       let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
-      const approvalUrl = data.approvalUrl;
+      
     
+      if (paymentGateway === 'Credit or Debit Card') {
+        window.open(data.url, '_blank');
+    } else if (paymentGateway === 'Paypal') {
+        const approvalUrl = data.approvalUrl;
+        window.location.href = approvalUrl;
       // Redirect to the URL provided by the API
-      window.location.href = approvalUrl;
+    }
    
 
     // Redirect to the URL provided by the second API
