@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider"
 import { fontSans } from "@/lib/fonts"
 import { Toaster } from "@/components/ui/toaster"
+import { ModeToggle } from "@/components/Toggle";
 
 
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ModeToggle />
           {children}
           <Toaster />
         </ThemeProvider>

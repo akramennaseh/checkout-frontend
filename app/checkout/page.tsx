@@ -205,7 +205,7 @@ const Page = () => {
 
     return (
         <div>
-            <ModeToggle />
+            
             <div className="container xl:max-w-[1150px] px-[20px] pt-[38px] overflow-x-hidden">
                 <section id="step1" className="[counter-increment:_checkout-counter] grid gap-[38px] pb-[46px] md:pb-[39px]">
                     <div style={{

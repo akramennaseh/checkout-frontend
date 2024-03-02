@@ -77,3 +77,8 @@
   background-color: hsla(217.2, 91.2%, 59.8%, 0.2);;
 }
 
+.selectedTab {
+  color: red;
+  background: #000;
+}
+

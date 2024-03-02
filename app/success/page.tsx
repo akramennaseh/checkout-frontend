@@ -20,6 +20,12 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 import CopyToClipboard from '@/components/CopyToClipboard'
+const html2canvas = require('html2canvas');
+import { jsPDF } from "jspdf";
+import { Button } from '@/components/ui/button'
+import { AvatarIcon, CubeIcon, FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
+import { Box, CircleUser, Headset } from 'lucide-react'
+
 
 
 const Page = () => {
@@ -46,6 +52,15 @@ const Page = () => {
     name2: string;
     name3: string;
   }
+
+  const downloadPDF = async () => {
+    const input = document.getElementById('contentToConvert');
+    const canvas = await html2canvas(input);
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF();
+    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+    pdf.save("download.pdf");
+  };
 
 
   const [orderInfo, setOrderInfo] = useState<ProductInfo>({})
@@ -97,87 +112,92 @@ const Page = () => {
 
   return (
     <Suspense>
-      <div className='flex justify-center	pt-[100px]'>
+      <div className='flex justify-center	py-[100px]'>
         <Tabs defaultValue="My Plans" className="w-[800px]">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="My Plans">My Plans</TabsTrigger>
-            <TabsTrigger value="Your Info">Your Info</TabsTrigger>
-            <TabsTrigger value="Support">Support</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-3  h-[auto]">
+            <TabsTrigger value="My Plans"><Box className='mr-2 ' /> My Plans</TabsTrigger>
+            <TabsTrigger value="Your Info">< CircleUser className='mr-2 ' />Your Info</TabsTrigger>
+            <TabsTrigger value="Support"><Headset className='mr-2 '/>Support</TabsTrigger>
           </TabsList>
-          <TabsContent value="My Plans">
-            <Card>
-              <CardHeader>
-                <CardTitle>Your Subscriptions info</CardTitle>
-                <CardDescription>
-                  Welcome <a className='text-blue-600'>{orderInfo.name || 'Loading...'}</a> these are your subscription info :
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <Separator />
-                <div className='flex items-center justify-between'>
-                  <div>
-                    <CardTitle className='text-xl'>Subscription Type</CardTitle>
-                    <CardDescription className='pt-2'>
-                      {orderInfo.productName || 'Loading...'}
-                    </CardDescription>
-                  </div>
-                  <div>
-                    <CardTitle className='text-xl'>Extra simultaneous</CardTitle>
-                    <CardDescription className='pt-2'>
-                      {orderInfo.extras || 'Loading...'} screens
-                    </CardDescription>
-                  </div>
-                  <div>
-                    <CardTitle className='text-xl'>Proxy Protection</CardTitle>
-                    <CardDescription className='pt-2'>
-                      Proxy {orderInfo.proxy === '0' ? 'Disabled' : 'Enabled'}
-                    </CardDescription>
-                  </div>
-                </div>
-                <Separator />
-                {ownerInfo.map((item, index) => (
-                  <div key={index}>
-                    {ownerInfo.length === 1 ? (
-                      <CardTitle className='text-xl pt-3 text-primary'>This is your subscription info</CardTitle>
-                    ) : (
-                      <CardTitle className='text-xl pt-3 text-primary'>Your {index + 1}{index === 0 ? 'st' : index === 1 ? 'nd' : index === 2 ? 'rd' : 'th'} subscription</CardTitle>
-                    )}
-                    <div className='flex flex-wrap pb-5 pt-2 justify-between'>
-                      <div className="space-y-1">
-                        <Label htmlFor="Username">Username</Label>
-                        <CopyToClipboard text={item.name1}>
-                          <Card className='w-[350px] py-2 px-3'>
-                            <p>{item.name1}</p>
-                          </Card>
-                        </CopyToClipboard>
-                      </div>
-                      <div className="space-y-1">
-                        <Label htmlFor="password">Password</Label>
-                        <CopyToClipboard text={item.name2}>
-                        <Card className='w-[350px] py-2 px-3'><p>{item.name2}</p></Card>
-                        </CopyToClipboard>
-                      </div>
-                      <div className="space-y-1">
-                        <Label htmlFor="Host">Host</Label>
-                        <CopyToClipboard text={item.name3}>
-                          <Card className='w-[350px] py-2 px-3'><p>{item.name3}</p></Card>
-                        </CopyToClipboard>
-                      </div>
-                      <div className="space-y-1">
-                        <Label htmlFor="M3u">M3u</Label>
-                        <CopyToClipboard text={`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}>
-                          <Card className='py-2 px-3'>
-                            <p>{`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}</p>
-                          </Card>
-                        </CopyToClipboard>
-                      </div>
+          
+            <TabsContent id="contentToConvert" value="My Plans">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Your Subscriptions info</CardTitle>
+                  <CardDescription>
+                    Welcome <a className='text-blue-600'>{orderInfo.name || 'Loading...'}</a> these are your subscription info :
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <Separator />
+                  <div className='flex items-center justify-between'>
+                    <div>
+                      <CardTitle className='text-xl'>Subscription Type</CardTitle>
+                      <CardDescription className='pt-2'>
+                        {orderInfo.productName || 'Loading...'}
+                      </CardDescription>
+                    </div>
+                    <div>
+                      <CardTitle className='text-xl'>Extra simultaneous</CardTitle>
+                      <CardDescription className='pt-2'>
+                        {orderInfo.extras || 'Loading...'} screens
+                      </CardDescription>
+                    </div>
+                    <div>
+                      <CardTitle className='text-xl'>Proxy Protection</CardTitle>
+                      <CardDescription className='pt-2'>
+                        Proxy {orderInfo.proxy === '0' ? 'Disabled' : 'Enabled'}
+                      </CardDescription>
                     </div>
                   </div>
-                ))}
-              </CardContent>
-            </Card>
+                  <Separator />
+                  {ownerInfo.map((item, index) => (
+                    <div key={index}>
+                      {ownerInfo.length === 1 ? (
+                        <CardTitle className='text-xl pt-3 text-primary'>This is your subscription info</CardTitle>
+                      ) : (
+                        <CardTitle className='text-xl pt-3 text-primary'>Your {index + 1}{index === 0 ? 'st' : index === 1 ? 'nd' : index === 2 ? 'rd' : 'th'} subscription</CardTitle>
+                      )}
+                      <div className='flex flex-wrap pb-5 pt-2 justify-between'>
+                        <div className="space-y-1">
+                          <Label htmlFor="Username">Username</Label>
+                          <CopyToClipboard text={item.name1}>
+                            <Card className='w-[350px] py-2 px-3'>
+                              <p>{item.name1}</p>
+                            </Card>
+                          </CopyToClipboard>
+                        </div>
+                        <div className="space-y-1">
+                          <Label htmlFor="password">Password</Label>
+                          <CopyToClipboard text={item.name2}>
+                          <Card className='w-[350px] py-2 px-3'><p>{item.name2}</p></Card>
+                          </CopyToClipboard>
+                        </div>
+                        <div className="space-y-1">
+                          <Label htmlFor="Host">Host</Label>
+                          <CopyToClipboard text={item.name3}>
+                            <Card className='w-[350px] py-2 px-3'><p>{item.name3}</p></Card>
+                          </CopyToClipboard>
+                        </div>
+                        <div className="space-y-1">
+                          <Label htmlFor="M3u">M3u</Label>
+                          <CopyToClipboard text={`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}>
+                            <Card className='py-2 px-3'>
+                              <p>{`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}</p>
+                            </Card>
+                          </CopyToClipboard>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+                <Button onClick={downloadPDF}>Download as PDF</Button>
+              </Card>
 
-          </TabsContent>
+            </TabsContent>
+          
+          
+          
           <TabsContent value="Your Info">
             <Card>
               <CardHeader>
@@ -209,23 +229,78 @@ const Page = () => {
               </CardContent>
             </Card>
           </TabsContent>
+          < TabsContent value="Support" >
+            <Card>
+              <CardHeader>
+              <CardTitle>You need help ? </CardTitle>
+              <CardDescription>
+              Contact us here!  We will be happy to assist you with any issue you may have.
+              </CardDescription>
+              <Separator/>
+                <CardContent>
+                  <CardTitle className='text-xl pt-4'>Email</CardTitle>
+                  <CardDescription className='pt-2'>
+                    <CopyToClipboard text="Support@bestertv.com">
+                      <div>
+                        <Card className='w-[auto] py-2 px-3'>
+                          Support@bestertv.com
+                        </Card>
+                      </div>
+                    </CopyToClipboard>
+                  </CardDescription>
+                  <CardTitle className='text-xl pt-4'>Whatsapp</CardTitle>
+                  <CardDescription className='pt-2'>
+                    <CopyToClipboard text="+44 123 456 789">
+                      <div>
+                        <Card className='w-[auto] py-2 px-3'>
+                          +44 123 456 789
+                        </Card>
+                      </div>
+                    </CopyToClipboard>
+                  </CardDescription>
+                  <CardTitle className='text-xl pt-4'>Telegram</CardTitle>
+                  <CardDescription className='pt-2'>
+                    <CopyToClipboard text="Bestertv">
+                      <div>
+                        <Card className='w-[auto] py-2 px-3'>
+                          Bestertv Support
+                        </Card>
+                      </div>
+                    </CopyToClipboard>
+                  </CardDescription>
+                  <CardTitle className='text-xl pt-4'>Facebook</CardTitle>
+                  <CardDescription className='pt-2'>
+                    <CopyToClipboard text="Bester Tv">
+                      <div>
+                        <Card className='w-[auto] py-2 px-3'>
+                        Bester Tv
+                        </Card>
+                      </div>
+                    </CopyToClipboard>
+                  </CardDescription>
+                </CardContent>
+              </CardHeader>
+            </Card>  
+          </TabsContent>
         </Tabs>
       </div>
+      {/*
       <div className='pt-[200px]'>
-        {ownerInfo.map((item, index) => (
-          <div key={index}>
-            <p>Name 1: {item.name1}</p>
-            <p>Name 2: {item.name2}</p>
-            <p>Name 3: {item.name3}</p>
-          </div>
-        ))}
-        <div>token={token}</div>
-        <div>paymentId={paymentId}</div>
-        <div>PayerID={PayerID}</div>
-        <div>Owner Info: {ownerInfo ? JSON.stringify(ownerInfo) : 'Loading...'}</div>
-        <div>--------------------------------------------------------------------------------------------------------------------------------------------------------</div>
-        <div>Owner Info: {orderInfo ? JSON.stringify(orderInfo) : 'Loading...'}</div>
+              {ownerInfo.map((item, index) => (
+                <div key={index}>
+                  <p>Name 1: {item.name1}</p>
+                  <p>Name 2: {item.name2}</p>
+                  <p>Name 3: {item.name3}</p>
+                </div>
+              ))}
+              <div>token={token}</div>
+              <div>paymentId={paymentId}</div>
+              <div>PayerID={PayerID}</div>
+              <div>Owner Info: {ownerInfo ? JSON.stringify(ownerInfo) : 'Loading...'}</div>
+              <div>--------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+              <div>Owner Info: {orderInfo ? JSON.stringify(orderInfo) : 'Loading...'}</div>
       </div>
+      */}
     </Suspense>
   )
 }
