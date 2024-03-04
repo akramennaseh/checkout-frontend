@@ -26,7 +26,7 @@ import { Button } from '@/components/ui/button'
 import { AvatarIcon, CubeIcon, FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 import { Box, CircleUser, Headset } from 'lucide-react'
 
-const page = () => {
+const Page = () => {
 
     interface ProductInfo {
         _id?: string;
@@ -302,4 +302,7 @@ const page = () => {
   )
 }
 
-export default page
+
+
+
+export default Page
