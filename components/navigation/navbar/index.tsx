@@ -7,11 +7,7 @@ import { useTheme } from "next-themes";
 
 
 const Navigat = ({ toggle }: { toggle: () => void }) => {
-  const { theme, resolvedTheme } = useTheme();
-
-if (!resolvedTheme) {
-  return <div>Loading...</div>; // Or replace with a loading spinner
-}
+  const { theme } = useTheme();
 
   const menus = [
     { title: "Features", path: "/#features" },
@@ -29,15 +25,14 @@ if (!resolvedTheme) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
-          <Link href="/" className="flex-none ">
+          <Link href="/checkout" className="flex-none ">
   <img 
     alt="Logo" 
-    
-    width="200" 
+    width="180" 
     height="200" 
     decoding="async" 
     data-nimg="1" 
-    src={resolvedTheme === 'dark' ? "/logo-dark.png" : "/logo-light.png"} 
+    src={theme === 'dark' ? "/logo-dark.png" : "/logo-light.png"} 
   />
 </Link>
             <div className="hidden flex-grow flex lg:flex lg:gap-10 justify-center items-center">

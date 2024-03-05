@@ -83,3 +83,24 @@
   background: #000;
 }
 
+
+.slick-dots{
+  display:none !important
+
+}
+
+.button.slick-arrow.slick-prev {
+  display: none !important;
+}
+
+.button.slick-arrow.slick-next{
+  display: none !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.blur-effect {
+  backdrop-filter: blur(10px);
+}
