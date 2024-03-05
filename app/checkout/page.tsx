@@ -11,6 +11,9 @@ import { Button } from '@/components/ui/button';
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
 import { RadioGroup } from '@headlessui/react'
+import { Badge } from "@/components/ui/badge"
+import Navigation from '@/components/navigation';
+
 
 
 const plans = [
@@ -63,6 +66,7 @@ type Product = {
     name: string;
     price: string;
     Instead: string;
+    sale:string;
     UseToo: string;
     periode: string;
 };
@@ -152,8 +156,9 @@ const Page = () => {
     };
 
     const products: Product[] = [
-        { id: 1, name: '6 Month Pass', price: '30', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
-        { id: 2, name: '12 Month Pass', price: '70', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
+        { id: 1, name: '6 Month Pass', price: '30',sale:"" , Instead: '', UseToo: '40', periode: '6Mon' },
+        { id: 2, name: '12 Month Pass', price: '70',sale:"70% sale" , Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '12Mon' },
+        { id: 3, name: '24 Month Pass', price: '90',sale:"" , Instead: '', UseToo: '40', periode: '9Mon' },
     ];
     const Extras: Extra[] = [
         { id: 1, price: '19.99' },
@@ -213,6 +218,7 @@ const Page = () => {
 
     return (
         <div>
+            <Navigation />
             
             <div className="container xl:max-w-[1150px] px-[20px] pt-[38px] overflow-x-hidden">
                 <section id="step1" className="[counter-increment:_checkout-counter] grid gap-[38px] pb-[46px] md:pb-[39px]">
@@ -241,7 +247,7 @@ const Page = () => {
                             lineHeight: '2rem',
                         }}>Choose the subscription that suits you</h1>
                     </div>
-                    <div className='flex flex-col  sm:flex-row'>  {products.map((product) => (
+                    <div className='flex flex-col  items-center sm:flex-row'>  {products.map((product) => (
                         <div
                             className=' flex-1 mx-5 my-8'
                             key={product.id}
@@ -251,15 +257,17 @@ const Page = () => {
                                 cursor: 'pointer',
                             }}
                         >
+                            
                             <Card className={`card ${selectedProduct?.id === product.id ? 'card-selected' : ''}`}>
-                                <CardHeader>
+                            {product.sale && <Badge className='ml-[125px] mt-3 place-content-center w-[auto]'>{product.sale}</Badge>}
+                            <CardHeader>
                                     <CardTitle>{product.name}</CardTitle>
                                     <CardDescription>Seamless Streaming. Unrivaled Quality.</CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <h1 style={{ display: "inline-block" }} className="text-4xl font-bold text-blue-700">{product.price}€</h1>
                                     <h1 className=" ml-2" style={{ display: "inline-block" }}>/month</h1>
-                                    <h1 className="line-through ml-2 text-primary">{product.Instead}</h1>
+                                    <h1 className="line-through ml-2 text-instant">{product.Instead}</h1>
                                 </CardContent>
                                 <CardFooter className="flex justify-between">
                                     <CardDescription>30-day money-back guarantee</CardDescription>
@@ -393,14 +401,7 @@ const Page = () => {
                                     }}>total</Label>
                                     <Input type="total" placeholder="total" value={total} readOnly />
                                 </div>
-                                <div style={{ }} className="px-5 pb-5 grid w-full items-center gap-4">
-                                    <Label htmlFor="productName" style={{
-                                        fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
-                                        fontSize: "18px",
-                                        fontWeight: 500,
-                                    }}>productName</Label>
-                                    <Input type="productName" placeholder="producto" value={productName} readOnly />
-                                </div>
+                                
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
@@ -455,7 +456,7 @@ const Page = () => {
                                                     ))}
                                                 </div>
                                             </RadioGroup>
-                                            <p>Selected plan ID: {selectedPlanId}</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
