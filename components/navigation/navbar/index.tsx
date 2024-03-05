@@ -3,9 +3,15 @@ import React from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/Toggle";
+import { useTheme } from "next-themes";
 
 
 const Navigat = ({ toggle }: { toggle: () => void }) => {
+  const { theme, resolvedTheme } = useTheme();
+
+if (!resolvedTheme) {
+  return <div>Loading...</div>; // Or replace with a loading spinner
+}
 
   const menus = [
     { title: "Features", path: "/#features" },
@@ -23,9 +29,17 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
-            <Link href="/" className="flex-none ">
-              <img alt="Logo" loading="lazy" width="200" height="200" decoding="async" data-nimg="1" src="/logobestertv.png" />
-            </Link>
+          <Link href="/" className="flex-none ">
+  <img 
+    alt="Logo" 
+    
+    width="200" 
+    height="200" 
+    decoding="async" 
+    data-nimg="1" 
+    src={resolvedTheme === 'dark' ? "/logo-dark.png" : "/logo-light.png"} 
+  />
+</Link>
             <div className="hidden flex-grow flex lg:flex lg:gap-10 justify-center items-center">
               <ul className="flex gap-6">
                 {menus.map((item, idx) => (
