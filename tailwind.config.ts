@@ -24,6 +24,8 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
+        primaryhover:"hsl(var(--primaryhover))",
+        rose:"hsl(var(--rose))",
         instant:"hsl(var(--instant))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

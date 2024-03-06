@@ -7,13 +7,15 @@
 
 @layer base {
   :root {
-    --background: 223, 90%, 92%;
+    --rose:327, 84% 52%;
+    --background: 0 0% 93%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --instant:327 84% 52%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+    --primaryhover: 259, 75%, 44%, 0.9;
     --primary: 259, 75%, 44%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
@@ -65,17 +67,20 @@
 }
 
 .card {
+  
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .card:hover {
+  
   transform: scale(1.05);
-  background-color:hsla(217.2, 91.2%, 59.8%, 0.2);;
+  background-color:hsl(0, 0%, 100%);
 }
 
 .card-selected {
+  border: 3px solid hsla(var(--primary)); /* Add this line */
   transform: scale(1.05);
-  background-color: hsla(217.2, 91.2%, 59.8%, 0.2);;
+  background-color: hsl(0, 0%, 100%);
 }
 
 .selectedTab {

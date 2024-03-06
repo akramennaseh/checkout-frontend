@@ -18,21 +18,21 @@ import Navigation from '@/components/navigation';
 
 const plans = [
     {
-      id: 1,
-      name: 'Paypal',
-      image: '/payp.png'
-  },
-  {
-      id: 2,
-      name: 'Credit or Debit Card',
-      image: '/CreditCard.svg'
-  },
-  {
-      id: 3,
-      name: 'Crypto Currencies -20%',
-      image: '/Cryptocurrency.svg'
-  },
-  ]
+        id: 1,
+        name: 'Paypal',
+        image: '/payp.png'
+    },
+    {
+        id: 2,
+        name: 'Credit or Debit Card',
+        image: '/CreditCard.svg'
+    },
+    {
+        id: 3,
+        name: 'Crypto Currencies -20%',
+        image: '/Cryptocurrency.svg'
+    },
+]
 
 
 
@@ -66,7 +66,7 @@ type Product = {
     name: string;
     price: string;
     Instead: string;
-    sale:string;
+    sale: string;
     UseToo: string;
     periode: string;
 };
@@ -91,8 +91,8 @@ const Page = () => {
     const [extras, setExtras] = useState('0');
     const [proxy, setProxy] = useState('0');
     const [discountCode, setDiscountCode] = useState('0');
-    
-    
+
+
 
     const { toast } = useToast();
 
@@ -105,39 +105,39 @@ const Page = () => {
             return;
         }
 
-        try { 
-      const response = await fetch('https://check-aax0.onrender.com/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, total, paymentGateway, productName, productPrice, extras, proxy, discountCode }),
-      });
+        try {
+            const response = await fetch('https://check-aax0.onrender.com/api/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, total, paymentGateway, productName, productPrice, extras, proxy, discountCode }),
+            });
 
-      const data = await response.json();
-      console.log(data);
-      console.log("Received data from API:", data);
-      console.log("Received sessionId from API:", data.sessionurl);
-      toast({ description: "Data submitted successfully." });
-      
+            const data = await response.json();
+            console.log(data);
+            console.log("Received data from API:", data);
+            console.log("Received sessionId from API:", data.sessionurl);
+            toast({ description: "Data submitted successfully." });
 
 
-      let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
-      
-    
-      if (paymentGateway === 'Credit or Debit Card') {
-        window.location.href = data.sessionurl;
-    } else if (paymentGateway === 'Paypal') {
-        const approvalUrl = data.approvalUrl;
-        window.location.href = approvalUrl;
-      // Redirect to the URL provided by the API
-    }
-   
 
-    // Redirect to the URL provided by the second API
-    
-      
-    } catch (error) {
+            let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
+
+
+            if (paymentGateway === 'Credit or Debit Card') {
+                window.location.href = data.sessionurl;
+            } else if (paymentGateway === 'Paypal') {
+                const approvalUrl = data.approvalUrl;
+                window.location.href = approvalUrl;
+                // Redirect to the URL provided by the API
+            }
+
+
+            // Redirect to the URL provided by the second API
+
+
+        } catch (error) {
             console.error('Error:', error);
             toast({ description: "An error occurred while submitting data.", variant: "destructive" });
         }
@@ -156,9 +156,9 @@ const Page = () => {
     };
 
     const products: Product[] = [
-        { id: 1, name: '6 Month Pass', price: '30',sale:"" , Instead: '', UseToo: '40', periode: '6Mon' },
-        { id: 2, name: '12 Month Pass', price: '70',sale:"70% sale" , Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '12Mon' },
-        { id: 3, name: '24 Month Pass', price: '90',sale:"" , Instead: '', UseToo: '40', periode: '9Mon' },
+        { id: 1, name: '6 Month Pass', price: '12', sale: "", Instead: '', UseToo: '40', periode: '6 Month' },
+        { id: 2, name: '12 Month Pass', price: '59', sale: "70% SALE", Instead: 'Instead of $12.99 per month', UseToo: '40', periode: ' Year' },
+        { id: 3, name: '24 Month Pass', price: '29', sale: "40% SALE", Instead: 'Instead of $12.99 per month', UseToo: '40', periode: ' 2Year' },
     ];
     const Extras: Extra[] = [
         { id: 1, price: '19.99' },
@@ -219,7 +219,7 @@ const Page = () => {
     return (
         <div>
             <Navigation />
-            
+
             <div className="container xl:max-w-[1150px] px-[20px] pt-[38px] overflow-x-hidden">
                 <section id="step1" className="[counter-increment:_checkout-counter] grid gap-[38px] pb-[46px] md:pb-[39px]">
                     <div style={{
@@ -247,29 +247,29 @@ const Page = () => {
                             lineHeight: '2rem',
                         }}>Choose the subscription that suits you</h1>
                     </div>
-                    <div className='flex flex-col  items-center sm:flex-row'>  {products.map((product) => (
+                    <div className='flex flex-col text-center flex-wrap items-center sm:flex-row'>  {products.map((product) => (
                         <div
                             className=' flex-1 mx-5 my-8'
                             key={product.id}
                             onClick={() => handleProductClick(product)}
                             style={{
-                                border: selectedProduct?.id === product.id ? '2px ' : 'none',
+
+                                borderRadius: 'var(--radius)',
                                 cursor: 'pointer',
                             }}
                         >
-                            
+
                             <Card className={`card ${selectedProduct?.id === product.id ? 'card-selected' : ''}`}>
-                            {product.sale && <Badge className='ml-[125px] mt-3 place-content-center w-[auto]'>{product.sale}</Badge>}
-                            <CardHeader>
-                                    <CardTitle>{product.name}</CardTitle>
-                                    <CardDescription>Seamless Streaming. Unrivaled Quality.</CardDescription>
+                                {product.sale && <Badge className='mt-2 text-[18px] place-content-center w-[auto] -translate-y-[25px] mb-0'>{product.sale}</Badge>}
+                                <CardHeader className={`${!product.sale ? '' : 'pt-0'}`}>
+                                    <CardTitle className='p-[0px] '>{product.name}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <h1 style={{ display: "inline-block" }} className="text-4xl font-bold text-blue-700">{product.price}€</h1>
-                                    <h1 className=" ml-2" style={{ display: "inline-block" }}>/month</h1>
+                                    <h1 className=" ml-2" style={{ display: "inline-block" }}>/{product.periode}</h1>
                                     <h1 className="line-through ml-2 text-instant">{product.Instead}</h1>
                                 </CardContent>
-                                <CardFooter className="flex justify-between">
+                                <CardFooter className="flex justify-center">
                                     <CardDescription>30-day money-back guarantee</CardDescription>
                                 </CardFooter>
                             </Card>
@@ -401,7 +401,7 @@ const Page = () => {
                                     }}>total</Label>
                                     <Input type="total" placeholder="total" value={total} readOnly />
                                 </div>
-                                
+
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
                                     <Label htmlFor="Select your preferred payment method" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
@@ -456,7 +456,7 @@ const Page = () => {
                                                     ))}
                                                 </div>
                                             </RadioGroup>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -553,15 +553,15 @@ export default Page
 
 function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
-      <svg viewBox="0 0 24 24" fill="none" {...props}>
-        <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
-        <path
-          d="M7 13l3 3 7-7"
-          stroke="#fff"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+        <svg viewBox="0 0 24 24" fill="none" {...props}>
+            <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
+            <path
+                d="M7 13l3 3 7-7"
+                stroke="#fff"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
     )
-  }
+}

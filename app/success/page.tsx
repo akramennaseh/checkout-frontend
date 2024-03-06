@@ -25,6 +25,7 @@ import { jsPDF } from "jspdf";
 import { Button } from '@/components/ui/button'
 import { AvatarIcon, CubeIcon, FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 import { Box, CircleUser, Headset } from 'lucide-react'
+import Navigation from '@/components/navigation'
 
 
 
@@ -112,6 +113,7 @@ const Page = () => {
 
   return (
     <Suspense>
+      <Navigation />
       <div className='flex justify-center	py-[100px]'>
         <Tabs defaultValue="My Plans" className="w-[800px]">
           <TabsList className="grid w-full grid-cols-3  h-[auto]">

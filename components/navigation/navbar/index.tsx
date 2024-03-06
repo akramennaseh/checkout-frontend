@@ -4,54 +4,59 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/Toggle";
 import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 
 const Navigat = ({ toggle }: { toggle: () => void }) => {
   const { theme } = useTheme();
 
   const menus = [
-    { title: "Features", path: "/#features" },
-    { title: "Channel List", path: "/channels-list" },
-    { title: "Pricing", path: "/#pricing" },
-    { title: "Reseller", path: "/Reseller/#ResellerPricing" },
-    { title: "FAQs", path: "/#faq" },
-    { title: "Installation Guide", path: "/guides" },
-    { title: "Contact us", path: "/#contact" },
+    { title: "Channels List", path: "/#" },
+    { title: "Apps", path: "/#" },
+    { title: "Login", path: "/#" },
   ]
 
   return (
     <>
-      <div className="w-full h-auto ">
+      <div className="w-full h-auto bg-white ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
-          <Link href="/checkout" className="flex-none ">
-  <img 
-    alt="Logo" 
-    width="180" 
-    height="200" 
-    decoding="async" 
-    data-nimg="1" 
-    src={theme === 'dark' ? "/logo-dark.png" : "/logo-light.png"} 
-  />
-</Link>
-            <div className="hidden flex-grow flex lg:flex lg:gap-10 justify-center items-center">
+            <Link href="/checkout" className="flex-none ">
+              <img
+                alt="Logo"
+                width="180"
+                height="200"
+                decoding="async"
+                data-nimg="1"
+                src={theme === 'dark' ? "/logo-dark.png" : "/logo-light.png"}
+              />
+            </Link>
+            <div className="hidden flex-grow flex lg:flex lg:gap-10 justify-end items-center">
               <ul className="flex gap-6">
                 {menus.map((item, idx) => (
-                  <li key={idx} className="flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm text-foreground/60">
+                  <li key={idx} className="text-black flex items-center text-lg font-medium transition-colors hover:text-primary sm:text-sm ">
                     <Link href={item.path}>{item.title}</Link>
+
+                    
+                    
                   </li>
                 ))}
               </ul>
+              <Button variant="default" >
+            <Link href="/checkout" >Get your 70% OFF</Link>
+          </Button>
             </div>
             <div className="flex-none">
-              <ModeToggle />
+              
               <button
                 type="button"
-                className="ml-4 md:hidden relative z-10 -m-2 inline-flex items-center rounded-lg stroke-primary p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
+                className="text-black ml-4 lg:hidden relative z-10 -m-2 inline-flex items-center rounded-lg  p-2 hover:bg-gray-200/50 hover:stroke-black active:stroke-gray-900 "
                 onClick={toggle}
               >
                 <Menu />
+                
               </button>
             </div>
           </div>

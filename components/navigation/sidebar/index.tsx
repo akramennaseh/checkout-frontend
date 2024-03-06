@@ -26,20 +26,16 @@ const Sidebar = ({
   }, [isOpen]); // Run this effect whenever isOpen changes
 
   const menus = [
-    { title: "Features", path: "/#features" },
-    { title: "Channel List", path: "/channels-list" },
-    { title: "Pricing", path: "/#pricing" },
-    { title: "Reseller", path: "/Reseller/#ResellerPricing" },
-    { title: "FAQs", path: "/#faq" },
-    { title: "Installation Guide", path: "/guides" },
-    { title: "Contact us", path: "/#contact" },
+    { title: "Channels List", path: "/#" },
+    { title: "Apps", path: "/#" },
+    { title: "Login", path: "/#" },
   ]
 
   return (
     <>
-    {isOpen && <div className="fixed inset-0 z-10 bg-black/50 blur-effect"></div>}
+    {isOpen && <div className="fixed inset-0 z-10 bg-white/50 blur-effect"></div>}
     <div
-        className={`absolute inset-x-0 top-0 z-20 origin-top rounded-b-2xl bg-gray-500 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20 transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`absolute inset-x-0 top-0 z-20 origin-top rounded-b-2xl bg-gray-300 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20 transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <button className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-white p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none" onClick={toggle}>
           {/* Close icon */}
@@ -48,7 +44,7 @@ const Sidebar = ({
         
         <ul className="space-y-4">
           {menus.map((item, idx) => (
-            <li key={idx} className="block text-base leading-7 tracking-tight text-white">
+            <li key={idx} className="block text-base leading-7 tracking-tight text-black">
               <Link onClick={toggle} href={item.path}>{item.title}</Link>
             </li>
           ))}
