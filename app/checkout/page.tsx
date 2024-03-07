@@ -221,9 +221,9 @@ const Page = () => {
     return (
         <div>
             <Navigation />
-            <div className='hidden sm:flex text-white container px-[100px] py-[38px] overflow-x-hidden bg-primary'>
-                <h1 className='text-xl mb-2'>Embark on Your Unforgettable Television Adventure Today, Filled with Endless Entertainment and Exciting Discoveries</h1>
-                </div>
+             {/*<div className='hidden sm:flex text-white container px-[100px] py-[38px] overflow-x-hidden bg-primary'>
+              <h1 className='text-xl mb-2'>Embark on Your Unforgettable Television Adventure Today, Filled with Endless Entertainment and Exciting Discoveries</h1>
+    </div>*/}
 
             <div className="container xl:max-w-[1150px] px-[20px] pt-[38px] overflow-x-hidden">
                 
