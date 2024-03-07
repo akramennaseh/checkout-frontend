@@ -20,7 +20,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
   return (
     <>
       <div className="w-full h-auto bg-white ">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8" >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-5" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
             <Link href="/checkout" className="flex-none ">
@@ -36,7 +36,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
             <div className="hidden flex-grow flex lg:flex lg:gap-10 justify-end items-center">
               <ul className="flex gap-6">
                 {menus.map((item, idx) => (
-                  <li key={idx} className="text-black flex items-center text-lg font-medium transition-colors hover:text-primary sm:text-sm ">
+                  <li key={idx} className="text-black flex items-center text-lg font-medium transition-colors hover:text-primary sm:text-[16px] ">
                     <Link href={item.path}>{item.title}</Link>
 
                     
