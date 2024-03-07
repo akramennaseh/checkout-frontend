@@ -401,7 +401,7 @@ const Page = () => {
                                         fontSize: "18px",
                                         fontWeight: 500,
                                     }}>Name</Label>
-                                    <Input className='' type="name" placeholder="name" value={name} onChange={e => setName(e.target.value)} />
+                                    <Input className='' type="name" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
                                     <Label htmlFor="Email" style={{
