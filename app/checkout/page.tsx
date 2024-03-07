@@ -13,6 +13,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { RadioGroup } from '@headlessui/react'
 import { Badge } from "@/components/ui/badge"
 import Navigation from '@/components/navigation';
+import { ArrowRight } from 'lucide-react';
 
 
 
@@ -418,7 +419,7 @@ const Page = () => {
                                                             key={plan.name}
                                                             value={plan}
                                                             className={({ checked }) =>
-                                                                `${checked ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300 bg-sky-900/75 text-white' : 'bg-white'}
+                                                                `${checked ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-primary bg-white text-white' : 'bg-white/60 ring-2 ring-white/60 ring-offset-1 ring-offset-black'}
                             relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                                                             }
                                                         >
@@ -429,7 +430,7 @@ const Page = () => {
                                                                             <div className="text-sm">
                                                                                 <RadioGroup.Label
                                                                                     as="p"
-                                                                                    className={`font-medium  ${checked ? 'text-white' : 'text-gray-900'}`}
+                                                                                    className={`font-medium  ${checked ? 'text-black' : 'text-gray-900'}`}
                                                                                 >
                                                                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                                                                         <span>{plan.name}</span>
@@ -461,8 +462,20 @@ const Page = () => {
                                     </div>
                                 </div>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
-                                    <Button className='h-[50px]' type="submit">Continue</Button>
+                                    <Button className='h-[50px] relative flex items-center justify-center' type="submit">
+                                    Continue to payment 
+                                        <ArrowRight className='absolute right-5'/> 
+                                    </Button>
                                 </div>
+                                <div className='px-5 mb-[10px] gap-5 md:flex'>
+                                    <p className="mb-[10px] flex items-center justify-center gap-2.5 font-medium">
+                                        <img src="/secure.svg" alt="secure icon" /> Secure SSL Encrypted Payment</p>
+                                    <p className="mb-[13px] flex items-center justify-center gap-2.5 font-medium">
+                                        <img src="/money-back.svg" alt="money back icon" />
+                                        30-day money-back guarantee</p>
+                                </div>
+                                <p className="px-5 text-slate-500	 opacity-70">These do not entail memberships or subscriptions, nor do they involve automatic rebilling or renewal. Upon reaching the end of your allocated days, the decision to purchase additional days rests entirely with you, with no obligation to do so.</p>
+                                                                            
                             </form>
 
                         </Card>
