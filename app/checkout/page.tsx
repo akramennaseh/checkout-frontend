@@ -14,6 +14,7 @@ import { RadioGroup } from '@headlessui/react'
 import { Badge } from "@/components/ui/badge"
 import Navigation from '@/components/navigation';
 import { ArrowRight } from 'lucide-react';
+import Footer from '@/components/footer';
 
 
 
@@ -573,6 +574,7 @@ const Page = () => {
                     </div>
                 </section>
             </div>
+            <Footer/>
         </div>
     )
 }
