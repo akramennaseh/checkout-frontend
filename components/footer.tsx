@@ -3,12 +3,12 @@ import { Separator } from './ui/separator'
 
 const Footer = () => {
     return (
-        <div className='border-t border-black/10 bg-light'>
+        <div className='bg-white border-t border-black/10 bg-light'>
             <div className='container grid max-w-[1148px] px-[19px] py-[28px] mx-auto lg:grid-cols-[1fr_max-content] lg:gap-[111px] items-start md:py-[30px]'>
                 <div className='grid lg:grid-cols-[32fr_42fr] lg:gap-[51px]'>
                     <div>
                         <a href='/checkout'>
-                            <img className="[transition:filter_.3s] brightness-0 invert-[.60] mb-4 hover:brightness-100 hover:invert-0 group-focus-visible:brightness-100 group-focus-visible:invert-0" src='/logo-light.png' style={{
+                            <img className="mb-4 " src='/logo-light.png' style={{
                                 width: "177px",
 
                             }} alt='logo' />
