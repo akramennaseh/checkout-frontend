@@ -157,9 +157,9 @@ const Page = () => {
     };
 
     const products: Product[] = [
-        { id: 1, name: '6 Month Pass', price: '12', sale: "", Instead: '', UseToo: '40', periode: '6 Month' },
-        { id: 2, name: '12 Month Pass', price: '59', sale: "70% SALE", Instead: 'Instead of $12.99 per month', UseToo: '40', periode: ' Year' },
-        { id: 3, name: '24 Month Pass', price: '29', sale: "40% SALE", Instead: 'Instead of $12.99 per month', UseToo: '40', periode: ' 2Year' },
+        { id: 1, name: '6 Month Pass', price: '35.99', sale: "", Instead: '', UseToo: '40', periode: '6 Month' },
+        { id: 2, name: '12 Month Pass', price: '47.99', sale: "70% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
+        { id: 3, name: '24 Month Pass', price: '70.99', sale: "40% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' 2Year' },
     ];
     const Extras: Extra[] = [
         { id: 1, price: '19.99' },
@@ -220,16 +220,23 @@ const Page = () => {
     return (
         <div>
             <Navigation />
+            <div className='hidden sm:flex text-white container px-[100px] py-[38px] overflow-x-hidden bg-primary'>
+                <h1 className='text-xl mb-2'>Embark on Your Unforgettable Television Adventure Today, Filled with Endless Entertainment and Exciting Discoveries</h1>
+                </div>
 
             <div className="container xl:max-w-[1150px] px-[20px] pt-[38px] overflow-x-hidden">
-                <section id="step1" className="[counter-increment:_checkout-counter] grid gap-[38px] pb-[46px] md:pb-[39px]">
+                
+                <section id="step1" className="[counter-increment:_checkout-counter] grid gap-[10px] pb-[46px] md:pb-[39px]">
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
+                        flexDirection: 'row', // Change this line
                         justifyContent: 'start'
                     }}>
                         <div className="text-white bg-primary" style={{
                             width: '40px',
+                            minWidth: '40px',
+                            maxWidth: '40px',
                             height: '40px',
                             borderRadius: '50%',
                             display: 'flex',
@@ -237,7 +244,8 @@ const Page = () => {
                             justifyContent: 'center',
                             marginRight: '10px',
                             fontFamily: 'CircularStd,Arial,Helvetica,sans-serif',
-                            fontSize: '20px'
+                            fontSize: '20px',
+                            flexWrap: 'nowrap' // Add this line
                         }}>
                             1
                         </div>
@@ -246,11 +254,13 @@ const Page = () => {
                             fontSize: '24px',
                             fontWeight: 500,
                             lineHeight: '2rem',
-                        }}>Choose the subscription that suits you</h1>
+                        }}>
+                        Choose the plan that suits you
+                        </h1>
                     </div>
                     <div className='flex flex-col text-center flex-wrap items-center sm:flex-row'>  {products.map((product) => (
                         <div
-                            className=' flex-1 mx-5 my-8'
+                            className='flex-1 sm:mx-5 sm:my-8 mx-1 my-5'
                             key={product.id}
                             onClick={() => handleProductClick(product)}
                             style={{
@@ -286,6 +296,8 @@ const Page = () => {
                     }}>
                         <div className="text-white bg-primary" style={{
                             width: '40px',
+                            minWidth: '40px',
+                            maxWidth: '40px',
                             height: '40px',
                             borderRadius: '50%',
                             display: 'flex',
@@ -293,7 +305,8 @@ const Page = () => {
                             justifyContent: 'center',
                             marginRight: '10px',
                             fontFamily: 'CircularStd,Arial,Helvetica,sans-serif',
-                            fontSize: '20px'
+                            fontSize: '20px',
+                            flexWrap: 'nowrap' // Add this line
                         }}>
                             2
                         </div>
@@ -356,6 +369,8 @@ const Page = () => {
                     }}>
                         <div className="text-white bg-primary" style={{
                             width: '40px',
+                            minWidth: '40px',
+                            maxWidth: '40px',
                             height: '40px',
                             borderRadius: '50%',
                             display: 'flex',
@@ -363,7 +378,8 @@ const Page = () => {
                             justifyContent: 'center',
                             marginRight: '10px',
                             fontFamily: 'CircularStd,Arial,Helvetica,sans-serif',
-                            fontSize: '20px'
+                            fontSize: '20px',
+                            flexWrap: 'nowrap' // Add this line
                         }}>
                             3
                         </div>
