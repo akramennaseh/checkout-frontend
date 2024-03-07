@@ -52,7 +52,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
               
               <button
                 type="button"
-                className="text-black ml-4 lg:hidden relative z-10 -m-2 inline-flex items-center rounded-lg  p-2  hover:stroke-black active:stroke-gray-900 "
+                className="text-black ml-4 lg:hidden relative z-10 -m-2 inline-flex items-center rounded-lg  p-2 hover:bg-gray-200/50 hover:stroke-black active:stroke-gray-900 "
                 onClick={toggle}
               >
                 <Menu />
