@@ -44,7 +44,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
                   </li>
                 ))}
               </ul>
-              <Button variant="default" >
+              <Button variant="default" style={{borderRadius: '25px',}} className="text-lg py-[25px] px-[32px]">
             <Link href="/checkout" >Get your 70% OFF</Link>
           </Button>
             </div>

@@ -436,7 +436,7 @@ const Page = () => {
                                                             key={plan.name}
                                                             value={plan}
                                                             className={({ checked }) =>
-                                                                `${checked ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-primary bg-white text-white' : 'bg-white/60 ring-2 ring-white/60 ring-offset-1 ring-offset-black'}
+                                                                `${checked ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-primary bg-white text-white' : 'bg-white/60 ring-2 ring-white/60 ring-offset-1 ring-offset-black/10'}
                             relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                                                             }
                                                         >
@@ -479,7 +479,7 @@ const Page = () => {
                                     </div>
                                 </div>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
-                                    <Button className='h-[50px] relative flex items-center justify-center' type="submit">
+                                    <Button className='text-lg h-[50px] relative flex items-center justify-center' type="submit">
                                     Continue to payment 
                                         <ArrowRight className='absolute right-5'/> 
                                     </Button>
