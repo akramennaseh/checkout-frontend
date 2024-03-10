@@ -159,8 +159,8 @@ const Page = () => {
 
     const products: Product[] = [
         { id: 1, name: '6 Month Pass', price: '35.99', sale: "", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6 Month' },
-        { id: 2, name: '12 Month Pass', price: '47.99', sale: "70% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
-        { id: 3, name: '24 Month Pass', price: '70.99', sale: "40% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' 2Year' },
+        { id: 2, name: '12 Month Pass', price: '47.99', sale: "60% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
+        { id: 3, name: '24 Month Pass', price: '70.99', sale: "70% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' 2Year' },
     ];
     const Extras: Extra[] = [
         { id: 1, price: '19.99' },
