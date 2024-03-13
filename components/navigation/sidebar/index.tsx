@@ -26,9 +26,9 @@ const Sidebar = ({
   }, [isOpen]); // Run this effect whenever isOpen changes
 
   const menus = [
-    { title: "Channels List", path: "/#" },
-    { title: "Apps", path: "/#" },
-    { title: "Login", path: "/#" },
+    { title: "Channels List", path: "/channels" },
+    { title: "Apps", path: "/apps" },
+    { title: "Login", path: "/support" },
   ]
 
   return (

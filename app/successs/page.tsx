@@ -26,6 +26,7 @@ import { Button } from '@/components/ui/button'
 import { AvatarIcon, CubeIcon, FaceIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 import { Box, CircleUser, Headset } from 'lucide-react'
 import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
 
 const Page = () => {
 
@@ -282,6 +283,7 @@ const Page = () => {
           </TabsContent>
         </Tabs>
       </div>
+      <Footer/>
       {/*
     <div>token={session_id}</div>
     <div className='pt-[200px]'>

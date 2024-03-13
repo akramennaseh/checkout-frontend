@@ -18,20 +18,20 @@ const Footer = () => {
                     <div className='grid gap-7 mb-[39px] lg:grid-flow-col lg:justify-between mt-[17px]'>
                         <div className='grid gap-[15px]'>
                             <p className="font-bold text-lg text-black">Legal</p>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Channels list</a>
+                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Channels list</a>
                             </div>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Apps</a>
+                            <div className="grid gap-4"><a href="/apps" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Apps</a>
                             </div>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Support</a>
+                            <div className="grid gap-4"><a href="/support" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Support</a>
                             </div>
                         </div>
                         <div className='grid gap-[15px]'>
                             <p className="font-bold text-lg text-black">Help</p>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Terms of Service</a>
+                            <div className="grid gap-4"><a href="/tos/terms-of-service" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Terms of Service</a>
                             </div>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Privacy Policy</a>
+                            <div className="grid gap-4"><a href="/tos/privacy-policy" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">Privacy Policy</a>
                             </div>
-                            <div className="grid gap-4"><a href="/channels" className="transition-[color,_transform] origin-left text-black/80 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">DMCA</a>
+                            <div className="grid gap-4"><a href="/tos/dmca" className="transition-[color,_transform] origin-left text-black/50 text-lg font-normal focus-within:text-primary focus-within:scale-105 w-max hover:text-primary hover:scale-105">DMCA</a>
                             </div>
                         </div>
                         

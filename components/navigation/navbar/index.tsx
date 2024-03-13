@@ -12,9 +12,9 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
   const { theme } = useTheme();
 
   const menus = [
-    { title: "Channels List", path: "/#" },
-    { title: "Apps", path: "/#" },
-    { title: "Login", path: "/#" },
+    { title: "Channels List", path: "/channels" },
+    { title: "Apps", path: "/apps" },
+    { title: "Login", path: "/support" },
   ]
 
   return (
