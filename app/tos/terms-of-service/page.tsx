@@ -19,18 +19,18 @@ const Page = () => {
                     <a href="" className='text-[1.25rem] font-bold my-[2rem]'>
                         Welcome to BesterTV!
                     </a>
-                    <p className='my-[1rem]'>These terms and conditions outline the rules and regulations for the use of BesterTV's Website, located at <a href="https://bestertv.com" rel="nofollow">https://bestertv.com</a>.</p>
+                    <p className='my-[1rem]'>These terms and conditions outline the rules and regulations for the use of BesterTV&apos;s Website, located at <a href="https://bestertv.com" rel="nofollow">https://bestertv.com</a>.</p>
                     <p className='my-[1rem]'>
                         By accessing this website we assume you accept these terms and conditions. Do not continue to use BesterTV if you do not agree to take all of the terms and conditions stated on this page.
                     </p>
                     <p className='my-[1rem]'>
-                        The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: 'Client', 'You' and 'Your' refers to you, the person log on this website and compliant to the Company’s terms and conditions. 'The Company', 'Ourselves', 'We', 'Our' and 'Us', refers to our Company. 'Party', 'Parties', or 'Us', refers to both the Client and ourselves. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of the provision of the Company’s stated services, by and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization, and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+                        The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: &apos;Client&apos;, &apos;You&apos; and &apos;Your&apos; refers to you, the person log on this website and compliant to the Company&apos;s terms and conditions. &apos;The Company&apos;, &apos;Ourselves&apos;, &apos;We&apos;, &apos;Our&apos; and &apos;Us&apos;, refers to our Company. &apos;Party&apos;, &apos;Parties&apos;, or &apos;Us&apos;, refers to both the Client and ourselves. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of the provision of the Company’s stated services, by and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization, and/or he/she or they, are taken as interchangeable and therefore as referring to same.
                     </p>
                     <a href="" className='text-[1.25rem] font-bold my-[2rem]'>
                         Cookies
                     </a>
                     <p className='my-[1rem]'>
-                        We employ the use of cookies. By accessing BesterTV, you agreed to use cookies in agreement with the BesterTV's <a href="https://bestertv.com/tos/privacy-policy" rel="nofollow">Privacy Policy</a>.
+                        We employ the use of cookies. By accessing BesterTV, you agreed to use cookies in agreement with the BesterTV&apos;s <a href="https://bestertv.com/tos/privacy-policy" rel="nofollow">Privacy Policy</a>.
                     </p>
                     <p className='my-[1rem]'>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
                     <a href="" className='text-[1.25rem] font-bold my-[2rem]'>
@@ -123,7 +123,7 @@ const Page = () => {
                         Refund Policy
                     </a>
                     <p className='my-[1rem]'>
-                        You can claim your refund within the guaranteed period available on each subscription. To get your refund you need to contact us by opening a ticket inside the member's area and provide us with a good reason that justifies the request. We may refuse to proceed with a refund if we judge that we can fix the issue for you.
+                        You can claim your refund within the guaranteed period available on each subscription. To get your refund you need to contact us by opening a ticket inside the member&apos;s area and provide us with a good reason that justifies the request. We may refuse to proceed with a refund if we judge that we can fix the issue for you.
                     </p>
                     <p className='my-[1rem]'>
                         Excluded from refunds:
@@ -148,7 +148,7 @@ const Page = () => {
                         BesterTV does not host any videos or TV streams on the website. We provide easier access to these streams which are otherwise freely available on the net. All channel names, content, and trademarks are the property of their respective owners. We are not affiliated and we do not claim to be affiliated with any of the owners or providers of videos and TV streams that are accessible through our website. This site and the products and services offered on this site are not associated, affiliated, endorsed, or sponsored by BesterTV or another brand shown on this website nor have they been reviewed tested, or certified by any of these brands. All trademarks, logos, and service marks displayed are registered and/or unregistered Trademarks of their respective owners.
                     </p>
                     <p className='my-[1rem]'>
-                        Every effort has been made to accurately represent the product(s) sold through this website and their potential. Any claims made or examples given are believed to be accurate, however, they should not be relied on in any way in deciding whether or not to purchase. Any testimonials and examples used are exceptional results, don't apply to the average purchaser, and are not intended to represent or guarantee that anyone will achieve the same or similar results. Each individual's success depends on his or her background, dedication, desire, and motivation as well as other factors not always known and sometimes beyond control.
+                        Every effort has been made to accurately represent the product(s) sold through this website and their potential. Any claims made or examples given are believed to be accurate, however, they should not be relied on in any way in deciding whether or not to purchase. Any testimonials and examples used are exceptional results, don&apos;t apply to the average purchaser, and are not intended to represent or guarantee that anyone will achieve the same or similar results. Each individual's success depends on his or her background, dedication, desire, and motivation as well as other factors not always known and sometimes beyond control.
                     </p>
                     <p className='my-[1rem]'>
                         There is no guarantee you will duplicate the results stated here. You recognize any business endeavor has inherent risk for loss of capital.

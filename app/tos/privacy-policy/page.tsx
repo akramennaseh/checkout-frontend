@@ -53,7 +53,7 @@ const Page = () => {
                         Please note that BesterTV has no control over the privacy policies or practices of these third-party services. We encourage you to review their privacy policies before using their services.
                     </p>
                     <a href="" className='text-[1.25rem] font-bold my-[2rem]'>
-                        Children's Information
+                        Children&apos;s Information
                     </a>
                     <p className='my-[1rem]'>
                         BesterTV is committed to protecting the privacy of children online. We do not knowingly collect any personal information from children under the age of 13. If you are a parent or guardian and you believe that your child has provided us with personal information, please contact us immediately and we will delete that information from our servers.
