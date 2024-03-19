@@ -133,6 +133,11 @@ const Page = () => {
                 const approvalUrl = data.approvalUrl;
                 window.location.href = approvalUrl;
                 // Redirect to the URL provided by the API
+            }else if (paymentGateway === 'Crypto Currencies -20%') {
+                const invoiceUrl = data.invoiceUrl;
+                window.location.href = invoiceUrl;
+                
+            
             }
 
 
