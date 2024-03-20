@@ -111,7 +111,7 @@ const Page = () => {
   return (
     <>
     <Navigation />
-    <div className='flex justify-center	py-[100px]'>
+    <div className='px-2 flex justify-center	py-[100px]'>
         <Tabs defaultValue="My Plans" className="w-[800px]">
           <TabsList className="grid w-full grid-cols-3  h-[auto]">
             <TabsTrigger value="My Plans"><Box className='mr-2 ' /> My Plans</TabsTrigger>
@@ -129,20 +129,20 @@ const Page = () => {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Separator />
-                  <div className='flex items-center justify-between'>
-                    <div>
+                  <div className=' flex flex-wrap items-center justify-between'>
+                    <div className='pt-3 sm:pt-1'>
                       <CardTitle className='text-xl'>Subscription Type</CardTitle>
                       <CardDescription className='pt-2'>
                         {orderInfo.productName || 'Loading...'}
                       </CardDescription>
                     </div>
-                    <div>
+                    <div className='pt-3 sm:pt-1'>
                       <CardTitle className='text-xl'>Extra simultaneous</CardTitle>
                       <CardDescription className='pt-2'>
                         {orderInfo.extras || 'Loading...'} screens
                       </CardDescription>
                     </div>
-                    <div>
+                    <div className='pt-3 sm:pt-1'>
                       <CardTitle className='text-xl'>Proxy Protection</CardTitle>
                       <CardDescription className='pt-2'>
                         Proxy {orderInfo.proxy === '0' ? 'Disabled' : 'Enabled'}
@@ -161,7 +161,7 @@ const Page = () => {
                         <div className="space-y-1">
                           <Label htmlFor="Username">Username</Label>
                           <CopyToClipboard text={item.name1}>
-                            <Card className='w-[350px] py-2 px-3'>
+                            <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                               <p>{item.name1}</p>
                             </Card>
                           </CopyToClipboard>
@@ -169,19 +169,19 @@ const Page = () => {
                         <div className="space-y-1">
                           <Label htmlFor="password">Password</Label>
                           <CopyToClipboard text={item.name2}>
-                          <Card className='w-[350px] py-2 px-3'><p>{item.name2}</p></Card>
+                          <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{item.name2}</p></Card>
                           </CopyToClipboard>
                         </div>
                         <div className="space-y-1">
                           <Label htmlFor="Host">Host</Label>
                           <CopyToClipboard text={item.name3}>
-                            <Card className='w-[350px] py-2 px-3'><p>{item.name3}</p></Card>
+                            <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{item.name3}</p></Card>
                           </CopyToClipboard>
                         </div>
-                        <div className="space-y-1">
+                        <div className="space-y-1 w-[300px] sm:w-[auto]">
                           <Label htmlFor="M3u">M3u</Label>
                           <CopyToClipboard text={`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}>
-                            <Card className='py-2 px-3'>
+                            <Card className='py-2 px-3' style={{ overflowX: 'auto' }}>
                               <p>{`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}</p>
                             </Card>
                           </CopyToClipboard>
@@ -190,7 +190,9 @@ const Page = () => {
                     </div>
                   ))}
                 </CardContent>
-                <Button onClick={downloadPDF}>Download as PDF</Button>
+                <div className='pb-3' style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Button id='download' onClick={() => window.print()}>Download as PDF</Button>
+                </div>
               </Card>
 
             </TabsContent>
@@ -206,23 +208,23 @@ const Page = () => {
               <CardContent className=" flex flex-wrap justify-between ">
                 <div className="pt-2 space-y-1">
                   <Label htmlFor="Name">Name</Label>
-                  <Card className='w-[350px] py-2 px-3'><p>{orderInfo.name || 'Loading...'}</p></Card>
+                  <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{orderInfo.name || 'Loading...'}</p></Card>
                 </div>
                 <div className="pt-2 space-y-1">
                   <Label htmlFor="Email">Email</Label>
-                  <Card className='w-[350px] py-2 px-3'><p>{orderInfo.email || 'Loading...'}</p></Card>
+                  <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{orderInfo.email || 'Loading...'}</p></Card>
                 </div>
                 <div className="pt-2 space-y-1">
                   <Label htmlFor="Total">Total</Label>
-                  <Card className='w-[350px] py-2 px-3'><p>{orderInfo.total || 'Loading...'}</p></Card>
+                  <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{orderInfo.total || 'Loading...'}</p></Card>
                 </div>
                 <div className="pt-2 space-y-1">
                   <Label htmlFor="Payment Gateway">Payment Gateway</Label>
-                  <Card className='w-[350px] py-2 px-3'><p>{orderInfo.paymentGateway || 'Loading...'}</p></Card>
+                  <Card className='w-[300px] sm:w-[350px] py-2 px-3'><p>{orderInfo.paymentGateway || 'Loading...'}</p></Card>
                 </div>
                 <div className="pt-2 space-y-1">
                   <Label htmlFor="Payment Status">Payment Status</Label>
-                  <Card className='w-[350px] py-2 px-3'>
+                  <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                     <p>{orderInfo.name ? 'Paid' : 'Not Paid Yet'}</p></Card>
                 </div>
               </CardContent>
@@ -236,12 +238,12 @@ const Page = () => {
               Contact us here!  We will be happy to assist you with any issue you may have.
               </CardDescription>
               <Separator/>
-                <CardContent>
+                <CardContent className='sm:px-4 px-0' >
                   <CardTitle className='text-xl pt-4'>Email</CardTitle>
                   <CardDescription className='pt-2'>
                     <CopyToClipboard text="Support@bestertv.com">
                       <div>
-                        <Card className='w-[auto] py-2 px-3'>
+                        <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                           Support@bestertv.com
                         </Card>
                       </div>
@@ -251,7 +253,7 @@ const Page = () => {
                   <CardDescription className='pt-2'>
                     <CopyToClipboard text="+44 123 456 789">
                       <div>
-                        <Card className='w-[auto] py-2 px-3'>
+                        <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                           +44 123 456 789
                         </Card>
                       </div>
@@ -261,7 +263,7 @@ const Page = () => {
                   <CardDescription className='pt-2'>
                     <CopyToClipboard text="Bestertv">
                       <div>
-                        <Card className='w-[auto] py-2 px-3'>
+                        <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                           Bestertv Support
                         </Card>
                       </div>
@@ -271,7 +273,7 @@ const Page = () => {
                   <CardDescription className='pt-2'>
                     <CopyToClipboard text="Bester Tv">
                       <div>
-                        <Card className='w-[auto] py-2 px-3'>
+                        <Card className='w-[300px] sm:w-[350px] py-2 px-3'>
                         Bester Tv
                         </Card>
                       </div>

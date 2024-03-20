@@ -124,9 +124,6 @@ const Page = () => {
 
 
 
-            let totals = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
-
-
             if (paymentGateway === 'Credit or Debit Card') {
                 window.location.href = data.sessionurl;
             } else if (paymentGateway === 'Paypal') {
@@ -136,8 +133,7 @@ const Page = () => {
             }else if (paymentGateway === 'Crypto Currencies -20%') {
                 const invoiceUrl = data.invoiceUrl;
                 window.location.href = invoiceUrl;
-                
-            
+
             }
 
 

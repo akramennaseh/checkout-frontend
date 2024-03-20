@@ -55,14 +55,7 @@ const Page = () => {
     name3: string;
   }
 
-  const downloadPDF = async () => {
-    const input = document.getElementById('contentToConvert');
-    const canvas = await html2canvas(input);
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF();
-    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-    pdf.save("download.pdf");
-  };
+
 
 
   const [orderInfo, setOrderInfo] = useState<ProductInfo>({})
@@ -185,7 +178,7 @@ const Page = () => {
                         <div className="space-y-1">
                           <Label htmlFor="M3u">M3u</Label>
                           <CopyToClipboard text={`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}>
-                            <Card className='py-2 px-3'>
+                            <Card className='pt-2 px-3'>
                               <p>{`${item.name3}/get.php?username=${item.name1}&password=${item.name2}&type=m3u_plus&output=mpegts`}</p>
                             </Card>
                           </CopyToClipboard>
@@ -194,8 +187,10 @@ const Page = () => {
                     </div>
                   ))}
                 </CardContent>
-                <Button onClick={downloadPDF}>Download as PDF</Button>
-              </Card>
+                <div className='pb-3' style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Button id='download' onClick={() => window.print()}>Download as PDF</Button>
+                </div>
+                </Card>
 
             </TabsContent>
           
