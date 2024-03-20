@@ -14,7 +14,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
   const menus = [
     { title: "Channels List", path: "/channels" },
     { title: "Apps", path: "/apps" },
-    { title: "Login", path: "/support" },
+    { title: "Login", path: "/login" },
   ]
 
   return (
