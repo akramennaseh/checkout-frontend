@@ -33,9 +33,11 @@ const Page = () => {
     
     const renderUrl = (orderId: string, paymentGateway: string) => {
         if (paymentGateway === 'Paypal') {
-            return '/success?paymentId=' + orderId;
+            return 'https://checkout-frontend-one.vercel.app/success?paymentId=' + orderId;
         } else if (paymentGateway === 'Credit or Debit Card') {
-            return '/successs?session_id=' + orderId;
+            return 'https://checkout-frontend-one.vercel.app/successs?session_id=' + orderId;
+        } else if (paymentGateway === 'Crypto Currencies -20%'){
+            return 'https://checkout-frontend-one.vercel.app/cryptosuccess?orderId=' + orderId;
         } else {
             return '';
         }
