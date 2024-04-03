@@ -72,7 +72,7 @@ const Page = () => {
   const [ownerInfo, setOwnerInfo] = useState<Item[]>([]);
 
   useEffect(() => {
-    fetch('https://check-aax0.onrender.com/api/paymentUpdate', {
+    fetch('https://api.bestertv.com/api/paymentUpdate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const Page = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        return fetch(`https://check-aax0.onrender.com/api/products/owner/${session_id}`)
+        return fetch(`https://api.bestertv.com/api/products/owner/${session_id}`)
       })
       .then(response => response.json())
       .then(data => {
@@ -96,7 +96,7 @@ const Page = () => {
         }));
         setOwnerInfo(extractedData);
         // Add another fetch request here
-        return fetch(`https://check-aax0.onrender.com/api/orders/id/${session_id}`)
+        return fetch(`https://api.bestertv.com/api/orders/id/${session_id}`)
       })
       .then(response => response.json())
       .then(data => {

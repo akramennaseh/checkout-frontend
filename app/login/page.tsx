@@ -16,7 +16,7 @@ const Page = () => {
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const res = await fetch(`https://check-aax0.onrender.com/emailOrder?email=${email}`);
+            const res = await fetch(`https://api.bestertv.com/emailOrder?email=${email}`);
             if (!res.ok) {
                 throw new Error('API request failed');
             }

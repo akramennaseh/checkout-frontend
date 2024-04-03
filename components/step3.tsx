@@ -92,7 +92,7 @@ const Step3 = () => {
     }
 
     try { 
-      const response = await fetch('https://check-aax0.onrender.com/api/customers', {
+      const response = await fetch('https://api.bestertv.com/api/customers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ const Step3 = () => {
 
       let response2;
       if (selectedPlanId === 1) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/paypal', {
+        response2 = await fetch('https://api.bestertv.com/api/payments/paypal', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const Step3 = () => {
           }),
         });
       } else if (selectedPlanId === 2) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/stripe', {
+        response2 = await fetch('https://api.bestertv.com/api/payments/stripe', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ const Step3 = () => {
           }),
         });
       } else if (selectedPlanId === 3) {
-        response2 = await fetch('https://check-aax0.onrender.com/api/payments/crypto', {
+        response2 = await fetch('https://api.bestertv.com/api/payments/crypto', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

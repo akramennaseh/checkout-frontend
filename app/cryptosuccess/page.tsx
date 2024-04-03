@@ -63,7 +63,7 @@ const Page = () => {
   
 
   useEffect(() => {
-    fetch('https://check-aax0.onrender.com/api/paymentUpdate', {
+    fetch('https://api.bestertv.com/api/paymentUpdate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Page = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        return fetch(`https://check-aax0.onrender.com/api/products/owner/${orderId}`)
+        return fetch(`https://api.bestertv.com/api/products/owner/${orderId}`)
       })
       .then(response => response.json())
       .then(data => {
@@ -87,7 +87,7 @@ const Page = () => {
         }));
         setOwnerInfo(extractedData);
         // Add another fetch request hereorderId
-        return fetch(`https://check-aax0.onrender.com/api/orders/id/${orderId}`)
+        return fetch(`https://api.bestertv.com/api/orders/id/${orderId}`)
       })
       .then(response => response.json())
       .then(data => {

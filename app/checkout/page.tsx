@@ -109,7 +109,7 @@ const Page = () => {
         }
 
         try {
-            const response = await fetch('https://check-aax0.onrender.com/api/orders', {
+            const response = await fetch('https://api.bestertv.com/api/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
