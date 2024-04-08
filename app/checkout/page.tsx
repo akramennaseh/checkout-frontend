@@ -24,11 +24,11 @@ const plans = [
         name: 'Paypal',
         image: '/payp.png'
     },
-    {
+    /*{
         id: 2,
         name: 'Credit or Debit Card',
         image: '/CreditCard.svg'
-    },
+    },*/
     {
         id: 3,
         name: 'Crypto Currencies -20%',
