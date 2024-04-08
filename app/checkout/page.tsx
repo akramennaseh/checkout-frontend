@@ -1,12 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { ModeToggle } from "@/components/Toggle";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Example from '@/components/selectepayment';
 import { Button } from '@/components/ui/button';
 import { ToastAction } from "@/components/ui/toast"
 import { useToast } from "@/components/ui/use-toast"
@@ -15,6 +13,10 @@ import { Badge } from "@/components/ui/badge"
 import Navigation from '@/components/navigation';
 import { ArrowRight } from 'lucide-react';
 import Footer from '@/components/footer';
+import { useSearchParams } from 'next/navigation';
+import Navigation2 from '@/components/navigation copy';
+import Clocking from '@/components/clocking';
+import Footercloacking from '@/components/footercloacking';
 
 
 
@@ -78,6 +80,34 @@ let selectedPlanId: number | null = 1;
 
 
 const Page = () => {
+    const [switcher, setSwitcher] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const searchParams = useSearchParams();
+    const PID = searchParams.get('PID');
+    useEffect(() => {
+        const fetchData = async () => {
+            if (!process.env.NEXT_PUBLIC_API_KEY) {
+                throw new Error('NEXT_PUBLIC_API_KEY is not defined in the environment variables');
+            }
+
+            try {
+                const response = await fetch('https://api.bestertv.com/api/paymentUpdate/switcher', {
+                    headers: {
+                        'X-API-Key': process.env.NEXT_PUBLIC_API_KEY
+                    }
+                });
+
+                const data = await response.json();
+                setSwitcher(data.switsher);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
     const [selected, setSelected] = useState(plans[0])
 
@@ -218,7 +248,12 @@ const Page = () => {
         setPaymentGateway(selected.name);
     }, [selected]);
 
-
+    if (loading) {
+        return <div className="loader-container inline-block mb-5 w-[100px]">
+        <img src="/loader.svg" alt="" />
+    </div>;
+    }
+    if (PID === switcher) {
 
     return (
         <div>
@@ -579,6 +614,12 @@ const Page = () => {
             <Footer/>
         </div>
     )
+}
+return <div>
+<Navigation2/>
+  <Clocking/>
+<Footercloacking/>
+    </div>;
 }
 export default Page
 
