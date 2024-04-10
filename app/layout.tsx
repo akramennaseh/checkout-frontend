@@ -13,7 +13,7 @@ import { ModeToggle } from "@/components/Toggle";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "BesterTv",
+  title: "Checkout",
   description: "Watch the best movies and series online",
 };
 

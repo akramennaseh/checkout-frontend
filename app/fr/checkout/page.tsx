@@ -17,6 +17,8 @@ import { useSearchParams } from 'next/navigation';
 import Navigation2 from '@/components/navigation copy';
 import Clocking from '@/components/clocking';
 import Footercloacking from '@/components/footercloacking';
+import Head from 'next/head'
+
 
 
 
@@ -256,6 +258,7 @@ const Page = () => {
     if (PID === switcher) {
 
     return (
+        
         <div>
             <Navigation />
              {/*<div className='hidden sm:flex text-white container px-[100px] py-[38px] overflow-x-hidden bg-primary'>
