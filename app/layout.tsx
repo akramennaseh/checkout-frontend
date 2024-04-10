@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { fontSans } from "@/lib/fonts"
 import { Toaster } from "@/components/ui/toaster"
 import { ModeToggle } from "@/components/Toggle";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 
 
@@ -28,6 +29,10 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
       )}>
+         {'G-EYZG3G37ZD' ? (
+          <GoogleAnalytics ga_id=
+            {'G-EYZG3G37ZD'} />
+        ) : null}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
