@@ -47,10 +47,7 @@ type DiscountCodes = {
 
 const getDiscountPercentage = (code: string): number => {
     const discounts: DiscountCodes = {
-        'CODE10': 10,
-        'CODE20': 20,
-        'CODE30': 30,
-        'AKRAM99': 99.95,
+        'GOBESTER10': 10,
     };
 
     return discounts[code.toUpperCase()] || 0;
