@@ -56,33 +56,26 @@ const page = () => {
                   </CardDescription>
                   <CardTitle className='text-xl pt-4'>Whatsapp</CardTitle>
                   <CardDescription className='pt-2'>
-                    <CopyToClipboard text="+44 123 456 789">
+                    
                       <div>
                         <Card className='w-[auto] py-2 px-3'>
-                          +44 123 456 789
+                          <a href='https://wa.me/+447443661526'> 
+                        +44 7443 661526
+                        </a>
                         </Card>
                       </div>
-                    </CopyToClipboard>
+                    
                   </CardDescription>
                   <CardTitle className='text-xl pt-4'>Telegram</CardTitle>
                   <CardDescription className='pt-2'>
-                    <CopyToClipboard text="Bestertv">
+                    
                       <div>
                         <Card className='w-[auto] py-2 px-3'>
-                          Bestertv Support
+                        <a href='https://t.me/Bester_TV'> 
+                            @Bester_TV
+                            </a>
                         </Card>
                       </div>
-                    </CopyToClipboard>
-                  </CardDescription>
-                  <CardTitle className='text-xl pt-4'>Facebook</CardTitle>
-                  <CardDescription className='pt-2'>
-                    <CopyToClipboard text="Bester Tv">
-                      <div>
-                        <Card className='w-[auto] py-2 px-3'>
-                        Bester Tv
-                        </Card>
-                      </div>
-                    </CopyToClipboard>
                   </CardDescription>
                 </CardContent>
               </CardHeader>
