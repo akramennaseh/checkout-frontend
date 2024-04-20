@@ -23,7 +23,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-5" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
-            <Link href="/checkout" className="flex-none ">
+            <Link href="https://bestertv.com/" className="flex-none ">
               <img
                 alt="Logo"
                 width="180"
@@ -45,7 +45,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
                 ))}
               </ul>
               <Button variant="default" style={{borderRadius: '25px',}} className="text-lg py-[25px] px-[32px]">
-            <Link href="/checkout" >Get your 70% OFF</Link>
+            <Link href="#" >Get your 70% OFF</Link>
           </Button>
             </div>
             <div className="flex-none">
