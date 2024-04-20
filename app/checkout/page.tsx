@@ -51,7 +51,7 @@ const getDiscountPercentage = (code: string): number => {
         'GOBESTER': 10,
         'GOBESTER20': 20,
         'besterr2':20,
-        'TESTING99':99,
+        'TESTING99':90,
     };
 
     return discounts[code.toUpperCase()] || 0;
