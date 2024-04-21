@@ -149,7 +149,7 @@ const Page = () => {
             });
 
             const data = await response.json();
-            console.log(data);
+            console.log(JSON.stringify(data, null, 2));
             console.log("Received data from API:", data);
             console.log("Received sessionId from API:", data.sessionurl);
             toast({ description: "Data submitted successfully." });
