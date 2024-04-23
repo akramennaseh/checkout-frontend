@@ -23,7 +23,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-5" >
 
           <div className="relative z-10 flex flex-wrap items-center justify-between w-full">
-            <Link href="https://bestertv.com/" className="flex-none ">
+            <Link href="https://bestertv.com/fr" className="flex-none ">
               <img
                 alt="Logo"
                 width="180"
