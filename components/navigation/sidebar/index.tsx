@@ -26,9 +26,9 @@ const Sidebar = ({
   }, [isOpen]); // Run this effect whenever isOpen changes
 
   const menus = [
-    { title: "Channels List", path: "/channels" },
-    { title: "Apps", path: "/apps" },
-    { title: "Login", path: "/login" },
+    { title: "Liste des chaînes", path: "/channels" },
+    { title: "Applications", path: "/apps" },
+    { title: "Se connecter", path: "/login" },
   ]
 
   return (
@@ -51,7 +51,7 @@ const Sidebar = ({
         </ul>
         <div className="mt-8 flex flex-col gap-4">
           <Button asChild className="inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors relative overflow-hidden bg-violet-600 text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-violet-600 active:text-white/80 before:transition-colors">
-            <Link href="#" onClick={toggle}>Get Started</Link>
+            <Link href="#form" onClick={toggle}>Commencer</Link>
           </Button>
         </div>
       </div>

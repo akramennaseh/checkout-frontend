@@ -12,9 +12,9 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
   const { theme } = useTheme();
 
   const menus = [
-    { title: "Channels List", path: "/channels" },
-    { title: "Apps", path: "/apps" },
-    { title: "Login", path: "/login" },
+    { title: "Liste des chaînes", path: "/channels" },
+    { title: "Applications", path: "/apps" },
+    { title: "Se connecter", path: "/login" },
   ]
 
   return (
@@ -45,7 +45,7 @@ const Navigat = ({ toggle }: { toggle: () => void }) => {
                 ))}
               </ul>
               <Button variant="default" style={{borderRadius: '25px',}} className="text-lg py-[25px] px-[32px]">
-            <Link href="#" >Get your 70% OFF</Link>
+            <Link href="#form" >Profitez de votre réduction de 70%</Link>
           </Button>
             </div>
             <div className="flex-none">
