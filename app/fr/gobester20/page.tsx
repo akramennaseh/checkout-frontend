@@ -602,7 +602,7 @@ const Page = () => {
                                     )}
                                     {discount.percentage > 0 && (
                                         <div className='grid gap-[14px] pt-[25px]'>
-                                            <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
+                                            <div className='text-[#D9238B] grid grid-flow-col justify-between font-medium text-lg  leading-[24px]'>
                                                 <p>Discount:</p>
                                                 <p>{`-${discount.percentage}%`}</p>
                                             </div>
