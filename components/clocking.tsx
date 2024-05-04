@@ -160,12 +160,12 @@ const Clocking = () => {
     };
 
     const products: Product[] = [
-        { id: 1, name: 'BASIC', price: '35.99', sale: "", Instead: '', UseToo: '40', periode: 'Month' },
-        { id: 2, name: 'STANDARD', price: '47.99', sale: "60% SALE", Instead: '', UseToo: '40', periode: ' Month' },
-        { id: 3, name: 'PREMIUM', price: '70.99', sale: "70% SALE", Instead: '', UseToo: '40', periode: ' Month' },
+        { id: 1, name: 'Starter', price: '29.99', sale: "", Instead: '', UseToo: '40', periode: 'Month' },
+        { id: 2, name: 'Advanced', price: '44.99', sale: "60% SALE", Instead: '', UseToo: '40', periode: ' Month' },
+        { id: 3, name: 'Pro', price: '70.99', sale: "70% SALE", Instead: '', UseToo: '40', periode: ' Month' },
     ];
     const Extras: Extra[] = [
-        { id: 1, price: '19.99' },
+        { id: 1, price: '1.59' },
 
     ];
 
@@ -515,22 +515,22 @@ const Clocking = () => {
                         </div>
                         <ul className="grid gap-[11px] opacity-70 leading-[20px] mt-[14px]">
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Create & Share Documents
+                            Code Generation
                             </li>
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Create & Share Spreadsheets
+                            Image Generation
                             </li>
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Quick Share
+                            Speech To Text Generation
                             </li>
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Image Editor
+                            Speech Duration 3 Minutes
                             </li>
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Digital Asset Management
+                            Text To Speech Generation 10 
                             </li>
                             <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                            Calendar
+                            Text Character Length 5000
                             </li>
                         </ul>
                         <div>

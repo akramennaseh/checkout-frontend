@@ -17,9 +17,6 @@ import { useSearchParams } from 'next/navigation';
 import Navigation2 from '@/components/navigation copy';
 import Clocking from '@/components/clocking';
 import Footercloacking from '@/components/footercloacking';
-import Head from 'next/head'
-import FooterEmail from '@/components/footerEmail';
-
 
 
 
@@ -153,7 +150,7 @@ const Page = () => {
             });
 
             const data = await response.json();
-            console.log(data);
+            console.log(JSON.stringify(data, null, 2));
             console.log("Received data from API:", data);
             console.log("Received sessionId from API:", data.sessionurl);
             toast({ description: "Data submitted successfully." });
@@ -184,7 +181,7 @@ const Page = () => {
 
 
     const [discount, setDiscount] = useState({ code: '', percentage: 0 });
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("GOBESTER50");
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -193,11 +190,14 @@ const Page = () => {
         const percentage = getDiscountPercentage(inputValue);
         setDiscount({ code: inputValue, percentage });
     };
+    useEffect(() => {
+        handleApplyClick();
+    }, []);
 
     const products: Product[] = [
-        { id: 1, name: 'Pass 6 mois', price: '29.99', sale: "", Instead: 'Au lieu de 39,99€', UseToo: '40', periode: '6 Mois' },
-        { id: 2, name: 'Pass 12 mois', price: '44.99', sale: "60% PROMO", Instead: 'Au lieu de 55,99€', UseToo: '40', periode: ' Année' },
-        { id: 3, name: 'Pass 24 mois', price: '70.99', sale: "70% PROMO", Instead: 'Au lieu de 99,99€ ', UseToo: '40', periode: ' 2 ans' },
+        { id: 1, name: '6 Month Pass', price: '29.99', sale: "", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6 Month' },
+        { id: 2, name: '12 Month Pass', price: '44.99', sale: "60% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
+        { id: 3, name: '24 Month Pass', price: '70.99', sale: "70% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' 2Year' },
     ];
     const Extras: Extra[] = [
         { id: 1, price: '1.59' },
@@ -261,7 +261,6 @@ const Page = () => {
     if (PID === switcher) {
 
     return (
-        
         <div>
             <Navigation />
              {/*<div className='hidden sm:flex text-white container px-[100px] py-[38px] overflow-x-hidden bg-primary'>
@@ -299,7 +298,7 @@ const Page = () => {
                             fontWeight: 500,
                             lineHeight: '2rem',
                         }}>
-                        Choisissez l'accès IPTV qui vous convient
+                        Choose the plan that suits you
                         </h1>
                     </div>
                     <div className='flex flex-col text-center flex-wrap items-center sm:flex-row'>  {products.map((product) => (
@@ -321,11 +320,11 @@ const Page = () => {
                                 </CardHeader>
                                 <CardContent>
                                     <h1 style={{ display: "inline-block" }} className="text-4xl font-bold text-blue-700">{product.price}€</h1>
-                                    <h1 className=" ml-2" style={{ display: "inline-block" }}>{/*/{product.periode}*/}</h1>
+                                    <h1 className=" ml-2" style={{ display: "inline-block" }}>/{product.periode}</h1>
                                     <h1 className="line-through ml-2 text-instant">{product.Instead}</h1>
                                 </CardContent>
                                 <CardFooter className="flex justify-center">
-                                    <CardDescription>Garantie de remboursement de 30 jours</CardDescription>
+                                    <CardDescription>30-day money-back guarantee</CardDescription>
                                 </CardFooter>
                             </Card>
                         </div>
@@ -359,7 +358,7 @@ const Page = () => {
                             fontSize: '24px',
                             fontWeight: 500,
                             lineHeight: '2rem',
-                        }}>Sélectionnez vos options
+                        }}>Select your options
                         </h1>
                     </div>
                     <>
@@ -369,8 +368,8 @@ const Page = () => {
                                     <div className='grid justify-items-center text-center md:justify-items-start md:grid-flow-col md:text-start md:justify-start md:gap-[35px] md:items-center'>
                                         <Image src="/ExtraConnections.svg" height="62" width='62' alt="Config Icon" className=" mb-[19px] md:mb-0" />
                                         <div>
-                                            <p className="transition-[color] text-[22px] leading-[24px] text-webDarker font-medium mb-2 group-focus-within:text-primary">Écrans simultanés supplémentaires</p>
-                                            <p className="text-webDark/70 leading-[20px]">Envie de partager votre abonnement avec votre famille ou vos amis ? Ajoutez autant d’écrans simultanés que nécessaire.</p>
+                                            <p className="transition-[color] text-[22px] leading-[24px] text-webDarker font-medium mb-2 group-focus-within:text-primary">Extra simultaneous screens</p>
+                                            <p className="text-webDark/70 leading-[20px]">Want to share your subscription with your family or friends? Add as many simultaneous screens as you need.</p>
                                         </div>
                                     </div>
                                     <div className="flex w-[236px] justify-between items-center mx-auto md:w-[222px] h-[60px]">
@@ -390,8 +389,8 @@ const Page = () => {
                                     <div className='grid justify-items-center text-center md:justify-items-start md:grid-flow-col md:text-start md:justify-start md:gap-[35px] md:items-center'>
                                         <Image src="/ProxyProtection.svg" height="62" width={62} alt="Config Icon" className="mb-[19px] md:mb-0" />
                                         <div>
-                                            <p className="transition-[color] text-[22px] leading-[24px] text-webDarker font-medium mb-2 group-focus-within:text-primary">Protection par proxy</p>
-                                            <p className="text-webDark/70 leading-[20px]">Proxy intégré pour masquer votre trafic et protéger votre vie privée</p>
+                                            <p className="transition-[color] text-[22px] leading-[24px] text-webDarker font-medium mb-2 group-focus-within:text-primary">Proxy Protection</p>
+                                            <p className="text-webDark/70 leading-[20px]">Built-in proxy to hide your traffic and protect your privacy</p>
                                         </div>
                                     </div>
                                     <div className="flex w-[236px] justify-between items-center mx-auto md:w-[222px] h-[60px]">
@@ -427,23 +426,23 @@ const Page = () => {
                         }}>
                             3
                         </div>
-                        <h1 id="form" style={{
+                        <h1 style={{
                             fontFamily: 'CircularStd,Arial,Helvetica,sans-serif',
                             fontSize: '24px',
                             fontWeight: 500,
                             lineHeight: '2rem',
-                        }}>Sélectionnez votre mode de paiement préféré
+                        }}>Select your preferred payment method
                         </h1>
                     </div>
-                    <div className='box  md:grid md:grid-cols-[63fr_45fr]  md:gap-[30px]'>
-                        <Card className='mb-5 pt-[17px] pb-[20px] md:box h-max md:pt-[24px] md:pb-[27px] [grid-row:2] md:[grid-row:_unset]'>
+                    <div className='box mx-1 grid md:grid-cols-[63fr_45fr] md:box-unset md:gap-[30px]'>
+                        <Card className='pt-[17px] pb-[20px] md:box h-max md:pt-[24px] md:pb-[27px] [grid-row:2] md:[grid-row:_unset]'>
                             <form onSubmit={handleSubmit}>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
                                     <Label htmlFor="Name" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
                                         fontSize: "18px",
                                         fontWeight: 500,
-                                    }}>Nom</Label>
+                                    }}>Name</Label>
                                     <Input className='' type="name" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
                                 </div>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
@@ -464,23 +463,22 @@ const Page = () => {
                                 </div>
 
                                 <div className="px-5 pb-5 grid w-full  items-center gap-4">
-                                    <Label htmlFor="Sélectionnez votre mode de paiement préféré" style={{
+                                    <Label htmlFor="Select your preferred payment method" style={{
                                         fontFamily: "CircularStd,Arial,Helvetica,sans-serif",
                                         fontSize: "18px",
                                         fontWeight: 500,
-                                    }}>Sélectionnez votre mode de paiement préféré</Label>
-                                    <div className="w-full  py-4">
+                                    }}>Select your preferred payment method</Label>
+                                    <div className="w-full px-4 py-4">
                                         <div className="mx-auto w-full ">
                                             <RadioGroup value={selected} onChange={(plan) => { setSelected(plan); selectPlan(plan.id); }}>
-                                                
+                                                <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
                                                 <div className="space-y-2">
                                                     {plans.map((plan) => (
                                                         <RadioGroup.Option
                                                             key={plan.name}
-                                                            style={{marginBottom: '15px'}}
                                                             value={plan}
                                                             className={({ checked }) =>
-                                                                `${checked ? ' ring-2 ring-white/60 ring-offset-4 ring-offset-primary bg-white text-white' : 'bg-white/60 ring-2 ring-white/60 ring-offset-1 ring-offset-black'}
+                                                                `${checked ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-primary bg-white text-white' : 'bg-white/60 ring-2 ring-white/60 ring-offset-1 ring-offset-black/10'}
                             relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                                                             }
                                                         >
@@ -524,35 +522,37 @@ const Page = () => {
                                 </div>
                                 <div className="px-5 pb-5 grid w-full items-center gap-4">
                                     <Button className='text-lg h-[50px] relative flex items-center justify-center' type="submit">
-                                    Continuer le paiement
+                                    Continue to payment 
                                         <ArrowRight className='absolute right-5'/> 
                                     </Button>
                                 </div>
                                 <div className='px-5 mb-[10px] gap-5 md:flex'>
                                     <p className="mb-[10px] flex items-center justify-center gap-2.5 font-medium">
-                                        <img src="/secure.svg" alt="secure icon" /> Sans Engagement</p>
+                                        <img src="/secure.svg" alt="secure icon" /> Secure SSL Encrypted Payment</p>
                                     <p className="mb-[13px] flex items-center justify-center gap-2.5 font-medium">
                                         <img src="/money-back.svg" alt="money back icon" />
-                                        Garantie de remboursement de 30 jours</p>
+                                        30-day money-back guarantee</p>
                                 </div>
-                                                                         
+                                <p className="px-5 text-slate-500	 opacity-70">These do not entail memberships or subscriptions, nor do they involve automatic rebilling or renewal. Upon reaching the end of your allocated days, the decision to purchase additional days rests entirely with you, with no obligation to do so.</p>
+                                                                            
                             </form>
 
                         </Card>
                         <Card className='md:box h-max md:px-[19px] [grid-row:1] md:[grid-row:_unset]'>
                             <div className='px-[27px] pt-[25px] pb-[21px] md:pt[30px] md:pr-0 md:pl-[6px] md:pb-6'>
-                            <p className='font-medium text-[22px] mb-[18px] leading-[24px]'>Avez-vous un code promo?</p>
-                                    
                                 <div className="flex w-full max-w-sm items-center space-x-2">
-                                    <Input type="name" placeholder=" Veuillez utiliser votre code ici" value={inputValue}
+                                <Input
+                                        type="name"
+                                        placeholder=" Veuillez utiliser votre code ici"
+                                        value={inputValue}
                                         onChange={handleInputChange}
                                     />
-                                    <Button type="submit" onClick={handleApplyClick}>Appliquer</Button>
+                                    <Button type="submit" onClick={handleApplyClick}>Apply</Button>
 
                                 </div>
                             </div>
-                            <div className='text-dark px-[27px] pb-[21px] md:pb-7 md:pt-[14px] md:border-t md:border-dark/10 md:px-0 md:pl-[9px]'>
-                                <p className="font-medium text-[22px] mb-[18px] leading-[24px]">Récapitulatif de la commande</p>
+                            <div className='text-dark px-[18px] pb-[21px] md:pb-7 md:pt-[14px] md:border-t md:border-dark/10 md:px-0 md:pl-[9px]'>
+                                <p className="font-medium text-[22px] mb-[18px] leading-[24px]">Order Summary</p>
                                 <div className="grid gap-[14px]">
                                     <div className="grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]" >
                                         <p>{selectedProductName}</p>
@@ -561,21 +561,23 @@ const Page = () => {
                                 </div>
                                 <ul className="grid gap-[11px] opacity-70 leading-[20px] mt-[14px]">
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Accédez à plus de 9 000 chaînes
+                                        Access over 9,000 channels
                                     </li>
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Des milliers de VOD disponibles
+                                        Thousands of VODs available
                                     </li>
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Profitez de chaînes HD premium 24h/24 et 7j/7
+                                        Enjoy premium HD channels 24/7
                                     </li>
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Mises à jour automatiques des chaînes
+                                        Automatic channel updates
                                     </li>
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Compatible avec tous vos appareils                                    </li>
+                                        Compatible with all your devices
+                                    </li>
                                     <li className="relative pl-7 before:absolute before:inset-0 before:[background:url('/check.svg')_no-repeat_center_left]">
-                                    Fonctionne de manière transparente avec toutes les applications IPTV                                    </li>
+                                        Works seamlessly with all IPTV apps
+                                    </li>
                                 </ul>
                                 <div>
                                     {count !== 0 && (
@@ -583,7 +585,8 @@ const Page = () => {
 
                                             <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
                                                 <p>{count} Extra Connections</p>
-                                               <p>€ {`${(count * 12 * parseFloat(Extras[0].price)).toFixed(2)}`}</p>
+                                                <p>€ {`${(count * 12 * parseFloat(Extras[0].price)).toFixed(2)}`}</p>
+                                                
                                             </div>
 
                                         </div>
@@ -591,14 +594,14 @@ const Page = () => {
                                     {checkboxValue !== 0 && (
                                         <div className='grid gap-[14px] pt-[25px]'>
                                             <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
-                                                <p>{checkboxValue} Protection par proxy</p>
+                                                <p>{checkboxValue} Proxy Protection</p>
                                                 <p>€{Proxys[0].price}</p>
                                             </div>
                                         </div>
                                     )}
                                     {discount.percentage > 0 && (
                                         <div className='grid gap-[14px] pt-[25px]'>
-                                            <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
+                                            <div className='text-[#D9238B] grid grid-flow-col justify-between font-medium text-lg leading-[24px]'>
                                                 <p>Discount:</p>
                                                 <p>{`-${discount.percentage}%`}</p>
                                             </div>
@@ -617,7 +620,7 @@ const Page = () => {
                     </div>
                 </section>
             </div>
-            <FooterEmail/>
+            <Footer/>
         </div>
     )
 }
@@ -634,7 +637,7 @@ export default Page
 function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 24 24" fill="none" {...props}>
-            <circle cx={12} cy={12} r={12} fill="#511cc4" opacity="1" />
+            <circle cx={12} cy={12} r={12} fill="#fff" opacity="0.2" />
             <path
                 d="M7 13l3 3 7-7"
                 stroke="#fff"

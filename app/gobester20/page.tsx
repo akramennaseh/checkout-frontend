@@ -51,6 +51,7 @@ const getDiscountPercentage = (code: string): number => {
         'GOBESTER': 10,
         'GOBESTER20': 20,
         'besterr2':20,
+        'GOBESTER50': 50,
         
     };
 
@@ -194,12 +195,12 @@ const Page = () => {
     }, []);
 
     const products: Product[] = [
-        { id: 1, name: '6 Month Pass', price: '35.99', sale: "", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6 Month' },
-        { id: 2, name: '12 Month Pass', price: '47.99', sale: "60% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
+        { id: 1, name: '6 Month Pass', price: '29.99', sale: "", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6 Month' },
+        { id: 2, name: '12 Month Pass', price: '44.99', sale: "60% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' Year' },
         { id: 3, name: '24 Month Pass', price: '70.99', sale: "70% SALE", Instead: 'Instead of €9.99 per month', UseToo: '40', periode: ' 2Year' },
     ];
     const Extras: Extra[] = [
-        { id: 1, price: '19.99' },
+        { id: 1, price: '1.59' },
 
     ];
 
@@ -226,7 +227,7 @@ const Page = () => {
         setSelectedProductName(product.name);
     };
     useEffect(() => {
-        const newTotal = (count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
+        const newTotal = (count * 12 * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * 12 * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2);
         setTotal(newTotal);
     }, [count, Extras, checkboxValue, Proxys, selectedProductPrice, discount.percentage]);
     useEffect(() => {
@@ -584,7 +585,8 @@ const Page = () => {
 
                                             <div className='grid grid-flow-col justify-between font-medium text-lg opacity-70 leading-[24px]'>
                                                 <p>{count} Extra Connections</p>
-                                                <p>€ {`${count * parseFloat(Extras[0].price)}`}</p>
+                                                <p>€ {`${(count * 12 * parseFloat(Extras[0].price)).toFixed(2)}`}</p>
+                                                
                                             </div>
 
                                         </div>
@@ -610,7 +612,7 @@ const Page = () => {
                             <div className='px-[18px] pt-[21px] pb-[25px] border-t border-b border-dark/10 md:border-b-0 md:pt-[34px] md:px-0 md:pl-[9px] md:pb-[35px]'>
                                 <div className='grid grid-flow-col justify-between font-medium text-[22px] leading-[24px] text-dark'>
                                     <p>Total</p>
-                                    <p>€{`${(count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2)}`}</p>
+                                    <p>€{`${(count * 12 * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0") - ((count * 12 * Number(Extras[0].price) + checkboxValue * Number(Proxys[0].price) + Number(selectedProductPrice || "0")) * Number(discount.percentage) / 100)).toFixed(2)}`}</p>
 
                                 </div>
                             </div>

@@ -184,7 +184,7 @@ const Page = () => {
 
 
     const [discount, setDiscount] = useState({ code: '', percentage: 0 });
-    const [inputValue, setInputValue] = useState("gobester20");
+    const [inputValue, setInputValue] = useState("GOBESTER10");
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);

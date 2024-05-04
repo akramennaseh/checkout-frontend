@@ -18,7 +18,7 @@ type Proxy = {
 
 const Step2 = () => {
     const Extras: Extra[] = [
-        { id: 1, price: '19.99'},
+        { id: 1, price: '1.59'},
 
     ];
     const Proxys: Proxy[] = [

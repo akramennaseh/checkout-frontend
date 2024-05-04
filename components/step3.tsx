@@ -181,7 +181,7 @@ const Step3 = () => {
     { id: 2, name: '12 Month Pass', price: '70', Instead: 'Instead of €9.99 per month', UseToo: '40', periode: '6Mon' },
   ];
   const Extras: Extra[] = [
-    { id: 1, price: '19.99' },
+    { id: 1, price: '1.59' },
 
   ];
 
