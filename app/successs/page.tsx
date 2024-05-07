@@ -254,8 +254,8 @@ const Page = () => {
                     
                     <div>
                         <Card className='w-[auto] py-2 px-3'>
-                          <a href='https://wa.me/+447443661526'> 
-                        +44 7443 661526
+                          <a href='https://wa.me/+33751306991'> 
+                        +33 7 51 30 69 91
                         </a>
                         </Card>
                     </div>

@@ -9,6 +9,7 @@ import { ModeToggle } from "@/components/Toggle";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Head from "next/head";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
+import Tawk from "@/components/tawk";
 
 
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         fontSans.variable
       )}>
+        <Tawk />
         <MicrosoftClarity />
          {'G-EYZG3G37ZD' ? (
           <GoogleAnalytics ga_id=
